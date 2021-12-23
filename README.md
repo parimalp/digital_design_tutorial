@@ -1,1 +1,25 @@
-# digital_design_tutorial
+# Digital Design Using Vivado IPI
+
+XUP has developed a basic functional IP blocks [library](https://www.xilinx.com/content/dam/xilinx/support/documentation/university/Vivado-Teaching/Digital-Design/2014x/labs-source/XUP_LIB.zip) which can be used to create digital designs in a schematic view. The tutorial and laboratory exercises are created and available for use with the XUP supported boards. The laboratory material is targeted for use in a introductory Digital Design course where professors want to include FPGA technology in the course to validate the learned principles through creating designs using Vivado.
+
+The tutorial is developed to get the users (students) introduced to the digital design flow in Xilinx programmable devices using Vivado IP Integrator (IPI).  The guide - How to create your own IPI block - guides you through the procedure of creating a custom IPI block and then use it in your next design.
+
+## Supporting Material
+
+| Material Type                  | Link                                                         |
+| ------------------------------ | ------------------------------------------------------------ |
+| Boolean Board Master XDC File  | [Boolean.xdc](https://www.realdigital.org/downloads/8d5c167add28c014173edcf51db78bb9.txt) |
+| Boolean Board Schematic        | [Schematic](https://www.realdigital.org/downloads/63f9a8205ebd9c2e8c2d265ad25097dc.pdf) |
+| Boolean Board Reference Manual | [Reference Manual](https://www.realdigital.org/doc/02013cd17602c8af749f00561f88ae21) |
+| PYNQ-Z2 Master XDC File        | [PYNQ-Z2 Master XDC](https://dpoauwgwqsy2x.cloudfront.net/Download/pynq-z2_v1.0.xdc.zip) |
+| Boolean Board Schematic        | [Schematics (PDF)](https://dpoauwgwqsy2x.cloudfront.net/Download/TUL_PYNQ_Schematic_R12.pdf) |
+| Boolean Board Reference Manual | [PYNQ-Z2 User Manual (PDF)](https://dpoauwgwqsy2x.cloudfront.net/Download/pynqz2_user_manual_v1_0.pdf) |
+| XUP LIB                        | [Library Components List.pdf](https://www.xilinx.com/content/dam/xilinx/support/documentation/university/Vivado-Teaching/Digital-Design/2014x/docs-pdf/Library_Components_List.pdf) |
+
+## Labs Material
+
+| Title                                 | Source                                                   |
+| ------------------------------------- | -------------------------------------------------------- |
+| Vivado Tutorial using XUP IPI Library | [sources](./sources/Vivado_Tutorial_Using_IP_Integrator) |
+| Create your own IPI block             | [sources]()                                              |
+
