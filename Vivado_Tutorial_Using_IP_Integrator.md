@@ -64,27 +64,79 @@ For more information, you can refer [this](https://www.xilinx.com/support/docume
 
 ## Step 1 Create a Vivado Project 
 
-### 1.1
-
 Launch Vivado and create a project targeting the *Boolean* and using the Verilog HDL. Use the provided Verilog source files and *tutorial_boolean.xdc*  filefrom the {SOURCES} directory.
 
-#### 1.1.1
+1. Open Vivado by selecting **Start > Xilinx Design Tools > Vivado 2021.2**
 
-Open Vivado by selecting **Start > Xilinx Design Tools > Vivado 2021.2**
+2. Click **Create New Project** to start the wizard. You will see *Create A New Vivado Project* dialog box. Click **Next**.
 
-#### 1.1.2
+3. Click the Browse button of the *Project location* field of the **New Project** form, browse to **{LABS}**, and click **Select**.
 
-Click **Create New Project** to start the wizard. You will see *Create A New Vivado Project* dialog box. Click **Next**.
-
-#### 1.1.3
-
-Click the Browse button of the *Project location* field of the **New Project** form, browse to **{LABS}**, and click **Select**.
-
-#### 1.1.4
-
-Enter **tutorial** in the *Project name* field.  Make sure that the *Create Project Subdirectory* box is checked.  Click **Next**.
+4. Enter **tutorial** in the *Project name* field.  Make sure that the *Create Project Subdirectory* box is checked.  Click **Next**.
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig2.png" alt="image-20211223145422112" style="zoom:65%;" />
 
 <center>Figure 2. Project Name and Location entry</center>
+
+
+5. Select **RTL Project** option in the *Project Type* form and click **Next**.
+
+6. Select **Verilog** as the *Target language* and *Simulator language* in the *Add Sources* form.
+
+7. Click **Next**.
+
+8. Click **Next** to get to the *Add Constraints*  form.
+9. Select constraints file entries, if displayed, and use ‘X’ button on the right to remove it.
+
+This Xilinx Design Constraints file assigns the physical IO locations on FPGA to the switches and LEDs located on the board.  This information can be obtained either through a board’s schematic or board’s user guide. We will add the file later.
+
+10. In the *Default Part* form, using the **Parts** option and various drop-down fields of the Filter section, select the **xc7s50csga342-1** part (for Nexys4) or the XC7A35TCPG236-1 part (for Basys3). Click Next.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
