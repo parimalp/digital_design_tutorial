@@ -23,3 +23,4 @@ The tutorial is developed to get the users (students) introduced to the digital 
 | Vivado Tutorial using XUP IPI Library | [sources](./sources/Vivado_Tutorial_Using_IP_Integrator) |
 | Create your own IPI block             | [sources]()                                              |
 
+**Note**: This tutorial is under construction, but currently, only Boolean Board is supported. Extension and support for PYNQ-Z2 will be added sooner. 

@@ -36,21 +36,21 @@ The design consists of some inputs directly connected to the corresponding outpu
 
 ## General Flow for this tutorial
 
-·    Create a Vivado project and set IP library setting
+- Create a Vivado project and set IP library setting
 
-·    Create a block design
+- Create a block design
 
-·    Create a HDL wrapper and add the provided constraint file
+- Create a HDL wrapper and add the provided constraint file
 
-·    Simulate the design using XSim simulator
+- Simulate the design using XSim simulator
 
-·    Synthesize the design
+- Synthesize the design
 
-·    Implement the design
+- Implement the design
 
-·    Perform the timing simulation
+- Perform the timing simulation
 
-·    Verify the functionality in hardware using the target board
+- Verify the functionality in hardware using the target board
 
 ###  In the instructions for the labs
 
@@ -65,4 +65,6 @@ For more information, you can refer [this](https://www.xilinx.com/support/docume
 ## Step 1 Create a Vivado Project 
 
 ### 1.1
+
+Launch Vivado and create a project targeting either the *Nexys4* or the *Basys3* and using the Verilog HDL. Use the provided Verilog source files and *tutorial_nexys4.xdc* (for Nexys4) file or *tutorial_basys3.xdc* (for Basys3) file from the <*2014_2_artix7_sources>* directory.
 
