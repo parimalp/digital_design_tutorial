@@ -32,7 +32,7 @@ The design consists of some inputs directly connected to the corresponding outpu
 
 ![fig1](img/Vivado_Tutorial_Using_IP_Integrator/fig1.png)
 
-<center>Figure 1. Cmmpleted Design</center>
+<center>Figure 1. Completed Design</center>
 
 ## General Flow for this tutorial
 
@@ -66,5 +66,25 @@ For more information, you can refer [this](https://www.xilinx.com/support/docume
 
 ### 1.1
 
-Launch Vivado and create a project targeting either the *Nexys4* or the *Basys3* and using the Verilog HDL. Use the provided Verilog source files and *tutorial_nexys4.xdc* (for Nexys4) file or *tutorial_basys3.xdc* (for Basys3) file from the <*2014_2_artix7_sources>* directory.
+Launch Vivado and create a project targeting the *Boolean* and using the Verilog HDL. Use the provided Verilog source files and *tutorial_boolean.xdc*  filefrom the {SOURCES} directory.
+
+#### 1.1.1
+
+Open Vivado by selecting **Start > Xilinx Design Tools > Vivado 2021.2**
+
+#### 1.1.2
+
+Click **Create New Project** to start the wizard. You will see *Create A New Vivado Project* dialog box. Click **Next**.
+
+#### 1.1.3
+
+Click the Browse button of the *Project location* field of the **New Project** form, browse to **{LABS}**, and click **Select**.
+
+#### 1.1.4
+
+Enter **tutorial** in the *Project name* field.  Make sure that the *Create Project Subdirectory* box is checked.  Click **Next**.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig2.png" alt="image-20211223145422112" style="zoom:65%;" />
+
+<center>Figure 2. Project Name and Location entry</center>
 
