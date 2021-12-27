@@ -62,7 +62,9 @@ For more information, you can refer [this](https://www.xilinx.com/support/docume
 
 **{LABS}** refers to *C:\digital_design_tutorial\\*. It assumes that you will create the mentioned directory structure to carry out the labs of this workshop
 
-## Step 1 Create a Vivado Project 
+## Step 1 Create a Vivado Project using IDE
+
+### Create a Vivado Project
 
 Launch Vivado and create a project targeting the *Boolean* and using the Verilog HDL. Use the provided Verilog source files and *tutorial_boolean.xdc*  filefrom the {SOURCES} directory.
 
@@ -86,29 +88,61 @@ Launch Vivado and create a project targeting the *Boolean* and using the Verilog
 7. Click **Next**.
 
 8. Click **Next** to get to the *Add Constraints*  form.
+
 9. Select constraints file entries, if displayed, and use ‘X’ button on the right to remove it.
 
-This Xilinx Design Constraints file assigns the physical IO locations on FPGA to the switches and LEDs located on the board.  This information can be obtained either through a board’s schematic or board’s user guide. We will add the file later.
+   This Xilinx Design Constraints file assigns the physical IO locations on FPGA to the switches and LEDs located on the board.  This information can be obtained either through a board’s schematic or board’s user guide. We will add the file later.
 
-10. In the *Default Part* form, using the **Parts** option and various drop-down fields of the Filter section, select the **xc7s50csga342-1** part (for Nexys4) or the XC7A35TCPG236-1 part (for Basys3). Click Next.
+10. In the *Default Part* form, using the **Parts** option and various drop-down fields of the **Filter section**, Select the **XC7Z020clg400-1**(for PYNQ-Z2) or **xc7s50csga324-1** (for Boolean).
 
+    
 
+![fig3](img/Vivado_Tutorial_Using_IP_Integrator/fig3.png)
 
+<center>Figure 3. Part selection for Boolean </center>
 
+![fig3](img/Vivado_Tutorial_Using_IP_Integrator/fig4.png)
 
+<center>Figure 4. Part selection for PYNQ-Z2 </center>
 
+11. Click **Finish** to create the Vivado project. 
 
+    Use the Windows Explorer and look at the **{LABS}** directory. You will find that file structure as shown below
 
+    ```
+    //File structure of created vivado project
+    
+    vivado_tutorial
+    │  vivado_tutorial.xpr
+    │
+    ├─vivado_tutorial.cache
+    │  └─wt
+    │          project.wpc
+    │
+    ├─vivado_tutorial.hw
+    │      vivado_tutorial.lpr
+    │
+    ├─vivado_tutorial.ip_user_files
+    └─vivado_tutorial.sim
+    ```
 
+    File with extension name `.xpr` is the *(Vivado) Project File*
 
+### Set IP repository path to point to the provided XUP IP library
 
+1. In the *Flow Navigator* window, click on **Settings** under the Project Manager group.
 
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig5.png" alt="fig5" style="zoom:67%;" />
 
+2. In the *Project Settings* window, click on the **IP->Repository**
 
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig6.png" alt="fig6" style="zoom:67%;" />
 
+   <center>Figure 6. Project Settings Panel</center>
 
+3. Click on the <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig7.png" alt="fig7" style="zoom:67%;" /> button, browse to **{SOURCES}** and select **XUP_LIB** directory, and click **Select**.
 
-
+   The directory will be scanned and the available IP entries will be displayed.
 
 
 
