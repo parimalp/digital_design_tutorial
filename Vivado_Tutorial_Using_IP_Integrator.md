@@ -140,37 +140,215 @@ Launch Vivado and create a project targeting the *Boolean* and using the Verilog
 
    <center>Figure 6. Project Settings Panel</center>
 
-3. Click on the <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig7.png" alt="fig7" style="zoom:67%;" /> button, browse to **{SOURCES}** and select **XUP_LIB** directory, and click **Select**.
+3. Click on the ![add](img/Vivado_Tutorial_Using_IP_Integrator/add.png)  button, browse to **{SOURCES}** and select **XUP_LIB** directory, and click **Refresh All** -> **OK**.
 
    The directory will be scanned and the available IP entries will be displayed.
 
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig7.png" alt="fig7" style="zoom:67%;" />
 
+<center>Figure 7. Adding IP Repositories</center>
 
+## Step 2 Create a Block Design
 
+### Create a block design
 
+1. In the *Flow Navigator* window, click on **Create Block Design** under the IP Integrator block
 
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig8.png" alt="fig8" style="zoom:67%;" />
 
+   Figure 8. Invoking IP Integrator to create a block diagram
 
+2. Click **OK** to create a block design named *design_1*
 
+3. IP from the catalog can be added in different ways. Click on *Add IP* in the message at the top of the *Diagram* panel, or press Ctrl + I, or right-click anywhere in the Diagram workspace and select Add IP
 
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig9.png" alt="fig8" style="zoom:67%;" />
 
+Figure 9. Add IP to Block Diagram
 
+4. Once the IP Catalog is open, type “inv” into the Search bar, find and double click on **XUP 1-input INV** entry, or click on the entry and hit the Enter key to add it to the design.
 
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig10.png" alt="fig10" style="zoom:67%;" />
 
+Figure 10. Add an inverter to the design
 
+5. Similarly, another instance of an inverter.
 
+6. Add two instances of 2-input AND gate and an instance of 2-input OR gate.
 
+   You can create an instance of already present IP, by clicking on it, pressing Ctrl key, and dragging the instance with the left mouse button.
 
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig11.png" alt="fig10" style="zoom:67%;" />
 
+Figure 11. Added necessary instances
 
+### Complete the Design
 
+1. Right-click on the **xup_inv_0** instance’s input port and select **Make External**. Similarly, make the output port of the same instance and make it external.
 
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig12.png" alt="fig12" style="zoom:67%;" />
 
+Figure 12. Making Ports External
 
+2. Click on the *a* port, and change the name to **SW0** in its properties form.
 
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig13.png" alt="fig13" style="zoom:67%;" />
 
+3. Similarly, change the output port *y* to **LD0** (as per the diagram in Figure 1)
 
+4. Arrange OR2 instance such that it is close to the two instances of the AND2. 
 
+5. Arrange the second instance of the inverter on the left of one of the AND2 gate
 
+6. Using the left-button of the mouse, draw a connection between the outputs of the AND2 instances and the two input of the OR2.
 
+   When you move the mouse closer to a port, the cursor becomes drawing pencil icon. Click the left-button of the mouse and keeping the button pressed draw it towards the destination port. You make a connection this way. 
 
+7. Similarly, connect the output of the inverter to one input of one of the AND2 instances.
+
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig14.png" alt="fig13" style="zoom:67%;" />
+
+Figure 14. Connecting Instances
+
+  This diagram is similar to the logic connected between SW1, SW2, SW3, and LD2.
+
+8. Make input ports of the **xup_inv_1**, *a* port of the **xup_and2_0**, and *b* port of the **xup_and2_1** instances external.
+9. Similarly, make the output port of the **xup_or2_0** instance external.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig15.png" alt="fig13" style="zoom:67%;" />
+
+Figure 15. Making ports external
+
+10. Change the name of *a* to **SW1**, *a_1* to **SW2**, *b* to **SW3**, and *y* to **LD2**.
+
+11. Right-click somewhere on the canvas and select Create Port.
+
+    A Create Port form will appear.
+
+12. Enter **LD1** as the port name, using the drop-down button select the type as *output*, and click **OK**
+
+    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig16.png" alt="fig13" style="zoom:67%;" />
+
+Figure 16. Creating an output port
+
+13. Similarly, create the output port naming it as **LD3**
+
+14. Connect the input port *a* of the **xup_and2_1** instance to output port of the instance **xup_inv_1**.
+
+15. Connect the output port of the **xup_and2_0** to **LD1** and **xup_and2_1** to **LD3**. Click on the re-draw button.
+
+    The diagram will look similar to shown below.
+
+    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig17.png" alt="fig13" style="zoom:67%;" />
+
+Figure 17. Partially completed design
+
+### Complete the design including rest of the switches and LDs
+
+1. Right-click on the canvas and create an input port *SW4*.
+
+2. Similarly, create *SW5*, *SW6*, and *SW7* as input ports, and *LD4*, *LD5*, *LD6*, and *LD7* as output ports.
+
+3. Using wiring tool, connect *SW4* to *LD4*, *SW5* to *LD5*, *SW6* to *LD6*, and *SW7* to *LD7*.
+
+4. Click the re-draw button.
+
+   The design should look like as shown below.
+
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig18.png" alt="fig13" style="zoom:67%;" />
+
+   Figure 18. The completed design
+
+5. Select **File > Save Block Design.**
+
+## Step 3 Create HDL Wrapper and Add a Constraint File
+
+### Create a HDL wrapper and analyze the hierarchy
+
+1. In the *sources* view, Right Click on the block diagram file, **design_1.bd**, and select **Create HDL Wrapper** to create the HDL wrapper file. When prompted, select **Let Vivado manage wrapper and auto-update**, click **OK.**
+
+2. In the *Sources* pane, expand the hierarchy. 
+
+   Notice the design_1_wrapper file instantiates design_1 which in turn instantiates the inverter twice, and2 twice, and or2 once.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig19.png" alt="fig13" style="zoom:67%;" />
+
+Figure 19. Hierarchical design
+
+3. Double-click the **design_1_wrapper.v** entry to open the file in text mode and observe the instantiation of the *design_1* module.
+4. Double-click the **design_1.v** entry to open the file in text mode and observe the instantiation of the lower-level modules.
+
+### Add tutorial_boolean.xdc (for Boolean Board) constraints source and analyze the content.
+
+1. Click on the **Add Sources** under the *Project Manager* group in the *Flow Navigator* window.
+
+2. Select the **Add or Create Constraints** option and click **Next**.
+
+3. Click **Add Files…** and browse to **{SOURCES}\tutorial**
+
+4. Select **tutorial_boolean.xdc** (for Boolean Board) and click **OK**.
+
+5. Click **Finish** to close the window and add the constraints file in the project under the Constraints group.
+
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig20.png" alt="fig13" style="zoom:67%;" />
+
+Figure 20. Constraints file added for Boolean Board
+
+6. In the *Sources* pane, expand the *Constraints* folder and double-click the **tutorial_boolean.xdc** entry to open the file in text mode.
+7. Lines 10-17 define the pin locations of the input SW0~6 and lines 21-30 define the pin locations of the output LD0~6. The SW7 and LD7 are deliberately not defined so you can learn how to enter them using other methods.
+
+### Perform RTL analysis on the source file.
+
+1. Expand the *Open Elaborated Design* entry under the *RTL Analysis* tasks of the *Flow Navigator* pane and click on **Schematic**.
+
+2. Click **Save** if asked.
+
+   The model (design) will be elaborated and a logic view of the design is displayed.
+
+3. Click on the **+** sign inside the block to see its content. Use the *Zoom Full(![image-20211227164120619](img/Vivado_Tutorial_Using_IP_Integrator/image-20211227164120619.png))* button.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig21.png" alt="fig13" style="zoom:67%;" />
+
+Figure 21. A logic View of the design
+
+  Notice that some of the switch inputs go through gates before being output to LEDs and the rest go straight through to LEDs as modeled in the file.
+
+### Add I/O constraints for the missing LED and switch pins
+
+1. Once RTL analysis is performed, another standard layout called the *I/O Planning* is available. Click on the drop-down button and select the *I/O Planning* layout.
+
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig22.png" alt="fig13" style="zoom:67%;" />
+
+   Figure 22. I/O Planning layout selection
+
+   Notice that the Package view is displayed in the Auxiliary View area, Device Constraints tab is selected, and I/O ports tab is displayed in the Console View area. Also notice that design ports (LD* and SW*) are listed in the I/O Ports tab with both having multiple I/O standards.
+
+   Move the mouse cursor over the Package view, highlighting different pins. Notice the pin site number is shown at the bottom of the Vivado GUI, along with the pin type (User IO, GND, VCCO…) and the I/O bank it belongs to.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig23.png" alt="fig13" style="zoom:67%;" />
+
+Figure 23. I/O Planning layout view of Boolean
+
+2. Click under the *I/O Std* column across the **LD7** row and select *LVCOMS33*. This assigns the LVCMOS33 standard to the site.
+
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig24.png" alt="fig13" style="zoom:67%;" />
+
+Figure 24. Assigning I/O standard to Boolean
+
+3. Similarly, click under the *Site* column across LD7 row to see a drop-down box appear. Type **E** (for Boolean)  in the field to jump to Exx  pins, scroll-down until you see E5 (Boolean), select E5 (Boolean) and hit the *Enter* key to assign the pin.
+
+4. You can also assign the pin constraints using tcl commands. Type in the following two commands in the Tcl Console tab to assign the *P2* (Boolean) pin location and the *LVCSMOS33* I/O standard to **SW7** hitting the Enter key after each command. 
+
+   **Boolean:**
+
+   ```tcl
+   set_property -dict {PACKAGE_PIN P2 IOSTANDARD LVCMOS33} [get_ports {SW7}]
+   ```
+
+   Observe the pin and I/O standard assignments in the I/O Ports tab.You can also assign the pin by selecting its entry (SW7) in the I/O ports tab, and dragging it to the Package view, and placing it at the P2 (Boolean) location. You can assign the LVCMOS33 standard by selecting its entry (SW7), selecting Configure tab of the I/O Port Properties window, followed by clicking the drop-down button of the I/O standard field, and selecting LVCMOS33.
+
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig25.png" alt="fig13" style="zoom:67%;" />
+
+   Figure 25. Assigning I/O standard through the I/O Port Properties form
+
+   5. 
