@@ -31,7 +31,7 @@ module tutorial_tb(
     begin      
        expected_led[0] = ~swt[0];
        expected_led[1] = swt[1] & ~swt[2];
-       expected_led[3] = swt[2] & swt[3];
+       expected_led[3] = ~swt[2] & swt[3];
        expected_led[2] = expected_led[1] | expected_led[3];
        expected_led[7:4] = swt[7:4];
     end   

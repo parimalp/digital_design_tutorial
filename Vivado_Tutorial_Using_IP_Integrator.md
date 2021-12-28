@@ -134,13 +134,13 @@ Launch Vivado and create a project targeting the *Boolean* and using the Verilog
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig5.png" alt="fig5" style="zoom:67%;" />
 
-2. In the *Project Settings* window, click on the **IP->Repository**
+2. In the *Project Settings* window, click on the **IP > Repository**
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig6.png" alt="fig6" style="zoom:67%;" />
 
    <center>Figure 6. Project Settings Panel</center>
 
-3. Click on the ![add](img/Vivado_Tutorial_Using_IP_Integrator/add.png)  button, browse to **{SOURCES}** and select **XUP_LIB** directory, and click **Refresh All** -> **OK**.
+3. Click on the ![add](img/Vivado_Tutorial_Using_IP_Integrator/add.png)  button, browse to **{SOURCES}** and select **XUP_LIB** directory, and click **Refresh All > OK**.
 
    The directory will be scanned and the available IP entries will be displayed.
 
@@ -351,4 +351,240 @@ Figure 24. Assigning I/O standard to Boolean
 
    Figure 25. Assigning I/O standard through the I/O Port Properties form
 
-   5. 
+5. Select **File > Constraints > Save ** and click **OK** to save the constraints in the **tutorial_boolean.xdc** file.
+
+   ## Step 4 Simulate the Design using the XSim Simulator
+
+   ### Add the tutorial_tb.v testbench file
+
+1. Click **Add Sources** under the *Project Manager* tasks of the *Flow Navigator* pane.
+
+2. Select the *Add or Create Simulation Sources* option and click **Next**.
+
+3. In the *Add Sources Files* form, click the **Add Files…** button.
+
+4. Browse to the **{SOURCES}\tutorial** folder and select *tutorial_tb.v* and click **OK**.
+
+5. Click **Finish**.
+
+6. Select the *Sources* tab and expand the *Simulation Sources* group.
+
+   The tutorial_tb.v file is added under the *Simulation Sources* group, and **system_wrapper_1.v** is automatically placed in its hierarchy as a tut1 instance.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig26.png" alt="fig13" style="zoom:67%;" />
+
+Figure 26. Simulation Sources hierarchy
+
+7. Using the Windows Explorer, verify that the **sim_1** directory is created at the same level as constrs_1 and sources_1 directories under the tutorial.srcs directory, and that a copy of tutorial_tb.v is placed under **vivao_tutorial.srcs > sim_1 > imports > tutorial**.
+8. Double-click on the **tutorial_tb** in the *Sources* pane to view its contents.
+
+```verilog
+// The self-checking testbench
+
+`timescale 1ns / 1ps
+/////////////////////////////////////////////////////////////////
+// Module Name: tutorial_tb
+/////////////////////////////////////////////////////////////////
+module tutorial_tb(
+    ); 
+    reg [7:0] switches;
+    wire [7:0] leds;
+    reg [7:0] e_led;    
+    integer i;    
+    design_1_wrapper tut1(
+            .LD0(leds[0]),
+            .LD1(leds[1]),
+            .LD2(leds[2]),
+            .LD3(leds[3]),
+            .LD4(leds[4]),
+            .LD5(leds[5]),
+            .LD6(leds[6]),
+            .LD7(leds[7]),
+            .SW0(switches[0]),
+            .SW1(switches[1]),
+            .SW2(switches[2]),
+            .SW3(switches[3]),
+            .SW4(switches[4]),
+            .SW5(switches[5]),
+            .SW6(switches[6]),
+            .SW7(switches[7]));
+ 
+    function [7:0] expected_led;
+       input [7:0] swt;
+    begin      
+       expected_led[0] = ~swt[0];
+       expected_led[1] = swt[1] & ~swt[2];
+        expected_led[3] = ~swt[2] & swt[3];
+       expected_led[2] = expected_led[1] | expected_led[3];
+       expected_led[7:4] = swt[7:4];
+    end   
+    endfunction   
+    
+    initial
+    begin
+        for (i=0; i < 255; i=i+2)
+        begin
+            #50 switches=i;
+            #10 e_led = expected_led(switches);
+            if(leds == e_led)
+                $display("LED output matched at", $time);
+            else
+                $display("LED output mis-matched at ",$time,": expected: %b, actual: %b", e_led, leds);
+        end
+    end
+      
+endmodule
+```
+
+The testbench defines the simulation step size and the resolution in line 1. The testbench module definition begins on line 5. Line 11 instantiates the DUT (device/module under test). Lines 29 through 38 define the same module functionality for the expected value computation. Lines 40 through 51 define the stimuli generation and compares the expected output with what the DUT provides. Line 53 ends the testbench. The $display task will print the message in the simulator console window when the simulation is run.
+
+### Simulate the design for 1000 ns using the XSim Simulator
+
+1. Select **Simulation Settings** under the *Project Manager* tasks of the *Flow Navigator* pane.
+
+   A **Project Settings** form will appear showing the **Simulation** properties form.
+
+2. Select the **Simulation** tab, and set the **Simulation Run Time** value to 200 ns and click **OK**.
+
+3. Click on **Run Simulation > Run Behavioral Simulation** under the *Project Manager* tasks of the *Flow Navigator* pane.
+
+   The testbench and source files will be compiled and the XSim simulator will be run (assuming no errors). You will see a simulator output similar to the one shown below.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig27.png" alt="fig13" style="zoom:67%;" />
+
+Figure 27. Simulator output
+
+   You will see four main views:
+
+(i) *Scopes,* where the testbench hierarchy as well as glbl instances are displayed, 
+
+(ii) *Objects,* where top-level signals are displayed,
+
+(iii) the waveform window, and
+
+(iv) *Tcl Console* where the simulation activities are displayed. Notice that since the testbench used is self-checking, the results are displayed as the simulation is run.
+
+Notice that the **tutorial.sim** directory is created under the **tutorial** directory, along with several lower-level directories. 
+
+```
+// Dictionary structure after running behavioral simulation
+vivado_tutorial.sim
+└─sim_1
+    └─behav
+        └─xsim
+            │  compile.bat
+            │  compile.log
+            │  elaborate.bat
+            │  elaborate.log
+            │  glbl.v
+            │  simulate.bat
+            │  simulate.log
+            │  tutorial_tb.tcl
+            │  tutorial_tb_behav.wdb
+            │  tutorial_tb_vlog.prj
+            │  xelab.pb
+            │  xsim.ini
+            │  xsim.ini.bak
+            │  xvlog.log
+            │  xvlog.pb
+            │
+            ├─protoinst_files
+            │      design_1.protoinst
+            │
+            └─xsim.dir
+                ├─tutorial_tb_behav
+                │  │  Compile_Options.txt
+                │  │  TempBreakPointFile.txt
+                │  │  xsim.dbg
+                │  │  xsim.mem
+                │  │  xsim.reloc
+                │  │  xsim.rlx
+                │  │  xsim.rtti
+                │  │  xsim.svtype
+                │  │  xsim.type
+                │  │  xsim.xdbg
+                │  │  xsimcrash.log
+                │  │  xsimk.exe
+                │  │  xsimkernel.log
+                │  │  xsimSettings.ini
+                │  │
+                │  └─obj
+                │          xsim_0.win64.obj
+                │          xsim_1.c
+                │          xsim_1.win64.obj
+                │
+                └─xil_defaultlib
+                        design_1.sdb
+                        design_1_wrapper.sdb
+                        design_1_xup_and2_0_0.sdb
+                        design_1_xup_and2_0_1.sdb
+                        design_1_xup_inv_0_0.sdb
+                        design_1_xup_inv_0_1.sdb
+                        design_1_xup_or2_0_1.sdb
+                        glbl.sdb
+                        tutorial_tb.sdb
+                        xil_defaultlib.rlx
+                        xup_and2.sdb
+                        xup_inv.sdb
+                        xup_or2.sdb
+```
+
+4. Click on the *Zoom Fit* button (![image-20211228120655503](img/Vivado_Tutorial_Using_IP_Integrator/image-20211228120655503.png)) located left of the waveform window to see the entire waveform.
+
+   Notice that the output changes when the input changes.
+
+   You can also float the simulation waveform window by clicking on the Float button on the upper right hand side of the view. This will allow you to have a wider window to view the simulation waveforms. To reintegrate the floating window back into the GUI, simply click on the Dock Window button.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig28.png" alt="fig13" style="zoom:67%;" />
+
+Figure 28. Float Button
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig28.png" alt="fig13" style="zoom:67%;" />
+
+Figure 29. Dock Window Button
+
+### Change display format if desired
+
+1. Select **i[31:0]** in the waveform window, right-click, select *Radix*, and then select *Unsigned Decimal* to view the for-loop index in *integer* form. Similarly, change the radix of **switches[7:0]** to *Hexadecimal*. Leave the **leds[7:0]** and **e_led[7:0]** radix to *binary* as we want to see each output bit.
+
+### Add more signals to monitor lower-level signals and continue to run the simulation for 500 ns.
+
+1. Expand the **tutorial_tb** instance, if necessary, in the *Scopes* window and select the **tut1** instance.
+
+   The SW* (7 to 0)] and LD* (7 to 0) signals will be displayed in the *Objects* window.
+
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig30.png" alt="fig13" style="zoom:67%;" />
+
+Figure 30. Selecting lower-level signals
+
+2. Select **SW\*** and **LD\*** and drag them into the waveform window to monitor those lower-level signals.
+
+3. On the simulator tool buttons ribbon bar, type 500 in the time window,  click on the drop-down button of the units field and select ns, and click on the (![image-20211228132903373](img/Vivado_Tutorial_Using_IP_Integrator/image-20211228132903373.png)) button.
+
+   The simulation will run for an additional 500 ns. 
+
+4. Click on the *Zoom Fit* button and observe the output.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig31.png" alt="fig13" style="zoom:67%;" />
+
+Figure 31. Running simulation for additional 500 ns
+
+5. Close the simulator by closing the *SIMULATION* window
+
+## Step 5 Synthesize the Design
+
+### Synthesize the design with the Vivado synthesis tool and analyze the Project Summary output.  
+
+1. Click on **Run Synthesis** under the *Synthesis* tasks of the *Flow Navigator* pane.
+
+   The synthesis process will be run on the tutorial.v file (and all its hierarchical files if they exist). When the process is completed a *Synthesis Completed* dialog box with three options will be displayed.
+
+2. Select the *Open Synthesized Design* option and click **OK** as we want to look at the synthesis output before progressing to the implementation stage.
+
+   Click **Yes** to close the elaborated design if the dialog box is displayed.
+
+3. Select the **Project Summary** tab (Select default layout if the tab is not visible) and understand the various windows.
+
+​                                Figure 33. Project Summary view
+
+Click on the various links to see what information they provide and which allows you to change the synthesis settings.
