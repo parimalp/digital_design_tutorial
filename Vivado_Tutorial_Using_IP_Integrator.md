@@ -585,6 +585,204 @@ Figure 31. Running simulation for additional 500 ns
 
 3. Select the **Project Summary** tab (Select default layout if the tab is not visible) and understand the various windows.
 
-​                                Figure 33. Project Summary view
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig32.png" alt="fig13" style="zoom:67%;" />
+
+Figure 32. Project Summary view
 
 Click on the various links to see what information they provide and which allows you to change the synthesis settings.
+
+4. Click on the **Table** tab in the **Project Summary** tab.
+
+   Notice that there are an estimated 16 IOs (8 input and 8 output) that are used.
+
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig33.png" alt="fig13" style="zoom:67%;" />
+
+Figure 33. Resource utilization estimation summary for Boolean
+
+5. Click on **Schematic** under the *Open Synthesized Design* tasks of *Synthesis* tasks of the *Flow Navigator* pane to view the synthesized design in a schematic view.
+
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig34.png" alt="fig13" style="zoom:67%;" />
+
+Figure 34. Synthesized design's schematic view
+
+Notice that IBUF and OBUF are automatically instantiated (added) to the design as the input and output are buffered. 
+
+6. Click on the **+** sign within the *design_1* block to see the underlying logic.
+7. Click on the **+** sign of each of the lower-level blocks to see their implementation.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig35.png" alt="fig13" style="zoom:67%;" />
+
+Figure 35. Lower-level logic
+
+The logical gates are implemented in LUTs (1 input is listed as LUT1 and 2 input is listed as LUT2). Five  blocks in RTL analysis output are mapped into five LUTs in the synthesized output.
+
+Using the Windows Explorer, verify that **tutorial.runs** directory is created under **tutorial**. Under the **runs** directory, **synth_1** directory is created which holds several temporary sub-directories.
+
+```
+// Dictionary structure after synthesis the design
+
+vivado_tutorial.runs
+├─.jobs
+├─design_1_xup_and2_0_0_synth_1
+│  └─.Xil
+├─design_1_xup_and2_0_1_synth_1
+│  └─.Xil
+├─design_1_xup_inv_0_0_synth_1
+│  └─.Xil
+├─design_1_xup_inv_0_1_synth_1
+│  └─.Xil
+├─design_1_xup_or2_0_1_synth_1
+│  └─.Xil
+└─synth_1
+    └─.Xil
+```
+
+## Step 6 Implement the Design
+
+### Implement the design with the Vivado Implementation Defaults settings and analyze the Project Summary output. 
+
+1. lick on **Run Implementation** under the *Implementation* tasks of the *Flow Navigator* pane.
+
+   The implementation process will be run on the synthesis output files. When the process is completed an *Implementation Completed* dialog box with three options will be displayed.
+
+2. Select **Open implemented design** and click **OK** as we want to look at the implemented design in a Device view tab.
+
+3. Click **Yes** to close the synthesized design. 
+
+   The implemented design will be opened.
+
+4. In the *Netlist* pane, select one of the nets (e.g. n_0_design_1_i) and notice that the displayed net. 
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig36.png" alt="fig13" style="zoom:67%;" />
+
+Figure 36. Selecting a net
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig37.png" alt="fig13" style="zoom:67%;" />
+
+Figure 37. Viewing implemented design for Boolean
+
+5. Close the implemented design view and select the **Project Summary** tab (you may have to change to the Default Layout view) and observe the results.
+
+   Notice that the actual resource utilization is three LUTs and 16 IOs. Also, it indicates that no timing constraints were defined for this design (since the design is combinatorial). Select the **Post-implementation** tabs under the *Timing* and *Utilization* windows.
+
+6. Using the Windows Explorer, verify that **impl_1** directory is created at the same level as **synth_1** under the **tutorial.runs** directory. The **impl_1** directory contains several files including the report files.
+
+7. Select the **Reports** tab, and double-click on the *Utilization Report* entry under the *Place Design* section. The report will be displayed in the auxiliary view pane showing resources utilization. Note that since the design is combinatorial no registers are used.
+
+## Step 7 Perform Timing Simulation
+
+### Run a timing simulation
+
+1. Select **Run Simulation > Run Post-Implementation Timing Simulation** process under the *Simulation* tasks of the *Flow Navigator* pane.
+
+   The XSim simulator will be launched using the implemented design and the **tutorial_tb** as the top-level module.
+
+   Using the Windows Explorer, verify that **timing** directory is created under the **tutorial.sim > sim_1 > impl** directory. The **timing** directory contains generated files to run the timing simulation.
+
+2. Click on the **Zoom Fit** button to see the waveform window from 0 to 200 ns.
+
+3. Right-click at 50 ns (where the switch input is set to 00000000) and select **Markers > Add Marker**. 
+
+4. Similarly, right-click and add a marker at around 55.000 ns where the **leds** changes.
+
+5. You can also add a marker by clicking on the Add Marker button (![image-20211229114109951](img/Vivado_Tutorial_Using_IP_Integrator/image-20211229114109951.png)). Click on the **Add Marker** button and left-click at around 60 ns where **e_led** changes.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig38.png" alt="fig13" style="zoom:67%;" />
+
+Figure 38. Timing simulation output
+
+Notice that we monitored the expected led output at 10 ns after the input is changed (see the testbench) whereas the actual delay is about 5.000 ns.
+
+6. Close the simulator by selecting **File > Close Simulation** without saving any changes.
+
+## Step 8 Generate the Bitstream and Verify Functionality
+
+### Connect the board and power it ON. Generate the bitstream, open a hardware session, and program the FPGA.  
+
+1. Click on the **Generate Bitstream** entry under the *Program and Debug* tasks of the *Flow Navigator* pane.
+
+   The bitstream generation process will be run on the implemented design. When the process is completed a *Bitstream Generation* *Completed* dialog box with three options will be displayed. 
+
+   This process will have **design_1_wrapper.bit** file generated under **impl_1** directory which was generated under the **tutorial.runs** directory.
+
+2. Make sure that the power supply source is jumper to *USB* and the provided Micro-USB cable is connected between the board and the PC. 
+
+   Note that you do not need to connect the power jack and the board can be powered and configured via USB alone
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig39.png" alt="fig13" style="zoom:67%;" />
+
+Figure 39. Board settings for Boolean
+
+3. Power **ON** the switch on the board.
+
+4. Select the *Open Hardware Manager* option and click **OK**.
+
+   The Hardware Session window will open indicating “unconnected” status.
+
+5. Click on the **Open target** link or the **Auto connect** button.
+
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig40.png" alt="fig13" style="zoom:67%;" />
+
+Figure 40. Opening and connecting to a new hardware target
+
+6. The Hardware Session status changes from Unconnected to the server name and the device is highlighted. Also notice that the Status indicates that it is not programmed.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig41.png" alt="fig13" style="zoom:67%;" />
+
+Figure 41. Opened hardware session for Boolean
+
+7. Select the device and verify that the **design_1_wrapper.bit** is selected as the programming file in the General tab.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig42.png" alt="fig13" style="zoom:67%;" />
+
+Figure 42. Programming file for Boolean
+
+8. Click **Program** to program the FPGA with the selected bitstream.
+
+   The DONE light will lit when the device is programmed. You may see some LEDs lit depending on the switches position.
+
+9. Verify the functionality by flipping switches and observing the output on the LEDs.
+
+10. Close the hardware session by selecting **File > Close Hardware Manager.** 
+
+11. Click **OK** to close the session.
+
+12. Power **OFF** the board.
+
+13. Close the **Vivado** program by selecting **File > Exit** and click **OK**.
+
+## Conclusion
+
+The Vivado software tool can be used to perform a complete design flow. The project was created using the XUP IP library (IPI blocks and user constraint file). A behavioral simulation was done to verify the model functionality. The model was then synthesized, implemented, and a bitstream was generated. The timing simulation was run on the implemented design using the same testbench. The functionality was verified in hardware using the generated bitstream. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
