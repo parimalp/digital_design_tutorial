@@ -64,7 +64,7 @@ The absolute path for the source code should only contain ascii characters. Deep
 
 ### Create a Vivado Project
 
-Launch Vivado and create a project targeting the *Boolean* and using the Verilog HDL. Use the provided Verilog source files and *tutorial_boolean.xdc*  filefrom the {SOURCES} directory.
+Launch Vivado and create a project targeting the *Boolean* and using the Verilog HDL. Use the provided Verilog source files and *tutorial_boolean.xdc*  file from the {SOURCES} directory.
 
 1. Open Vivado by selecting **Start > Xilinx Design Tools > Vivado 2021.2**
 
