@@ -12,8 +12,8 @@ The tutorial is developed to get the users (students) introduced to the digital 
 | Boolean Board Schematic        | [Schematic](https://www.realdigital.org/downloads/63f9a8205ebd9c2e8c2d265ad25097dc.pdf) |
 | Boolean Board Reference Manual | [Reference Manual](https://www.realdigital.org/doc/02013cd17602c8af749f00561f88ae21) |
 | PYNQ-Z2 Master XDC File        | [PYNQ-Z2 Master XDC](https://dpoauwgwqsy2x.cloudfront.net/Download/pynq-z2_v1.0.xdc.zip) |
-| Boolean Board Schematic        | [Schematics (PDF)](https://dpoauwgwqsy2x.cloudfront.net/Download/TUL_PYNQ_Schematic_R12.pdf) |
-| Boolean Board Reference Manual | [PYNQ-Z2 User Manual (PDF)](https://dpoauwgwqsy2x.cloudfront.net/Download/pynqz2_user_manual_v1_0.pdf) |
+| PYNQ-Z2 Schematic              | [Schematics (PDF)](https://dpoauwgwqsy2x.cloudfront.net/Download/TUL_PYNQ_Schematic_R12.pdf) |
+| PYNQ-Z2 Reference Manual       | [PYNQ-Z2 User Manual (PDF)](https://dpoauwgwqsy2x.cloudfront.net/Download/pynqz2_user_manual_v1_0.pdf) |
 | XUP LIB                        | [Library Components List.pdf](https://www.xilinx.com/content/dam/xilinx/support/documentation/university/Vivado-Teaching/Digital-Design/2014x/docs-pdf/Library_Components_List.pdf) |
 
 ## Labs Material
