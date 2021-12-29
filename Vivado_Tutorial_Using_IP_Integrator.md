@@ -154,7 +154,7 @@ Launch Vivado and create a project targeting the *Boolean* and using the Verilog
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig8.png" alt="fig8" style="zoom:67%;" />
 
-   Figure 8. Invoking IP Integrator to create a block diagram
+Figure 8. Invoking IP Integrator to create a block diagram
 
 2. Click **OK** to create a block design named *design_1*
 
@@ -293,7 +293,7 @@ Figure 19. Hierarchical design
 Figure 20. Constraints file added for Boolean Board
 
 6. In the *Sources* pane, expand the *Constraints* folder and double-click the **tutorial_boolean.xdc** entry to open the file in text mode.
-7. Lines 10-17 define the pin locations of the input SW0~6 and lines 21-30 define the pin locations of the output LD0~6. The SW7 and LD7 are deliberately not defined so you can learn how to enter them using other methods.
+7. Lines 10-16 define the pin locations of the input SW0~6 and lines 21-27 define the pin locations of the output LD0~6. The SW7 and LD7 are deliberately not defined so you can learn how to enter them using other methods.
 
 ### Perform RTL analysis on the source file.
 
@@ -335,7 +335,7 @@ Figure 24. Assigning I/O standard to Boolean
 
 3. Similarly, click under the *Site* column across LD7 row to see a drop-down box appear. Type **E** (for Boolean)  in the field to jump to Exx  pins, scroll-down until you see E5 (Boolean), select E5 (Boolean) and hit the *Enter* key to assign the pin.
 
-4. You can also assign the pin constraints using tcl commands. Type in the following two commands in the Tcl Console tab to assign the *P2* (Boolean) pin location and the *LVCSMOS33* I/O standard to **SW7** hitting the Enter key after each command. 
+4. You can also assign the pin constraints using tcl commands. Type in the following command in the Tcl Console tab to assign the *P2* (Boolean) pin location and the *LVCSMOS33* I/O standard to **SW7** hitting the Enter key after each command. 
 
    **Boolean:**
 
@@ -343,7 +343,7 @@ Figure 24. Assigning I/O standard to Boolean
    set_property -dict {PACKAGE_PIN P2 IOSTANDARD LVCMOS33} [get_ports {SW7}]
    ```
 
-   Observe the pin and I/O standard assignments in the I/O Ports tab.You can also assign the pin by selecting its entry (SW7) in the I/O ports tab, and dragging it to the Package view, and placing it at the P2 (Boolean) location. You can assign the LVCMOS33 standard by selecting its entry (SW7), selecting Configure tab of the I/O Port Properties window, followed by clicking the drop-down button of the I/O standard field, and selecting LVCMOS33.
+   Observe the pin and I/O standard assignments in the I/O Ports tab. You can also assign the pin by selecting its entry (SW7) in the I/O ports tab, and dragging it to the Package view, and placing it at the P2 (Boolean) location. You can assign the LVCMOS33 standard by selecting its entry (SW7), selecting Configure tab of the I/O Port Properties window, followed by clicking the drop-down button of the I/O standard field, and selecting LVCMOS33.
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig25.png" alt="fig13" style="zoom:67%;" />
 
