@@ -56,8 +56,6 @@ The design consists of some inputs directly connected to the corresponding outpu
 
 The absolute path for the source code should only contain ascii characters. Deep path should also be avoided since the maximum supporting length of path for Windows is 260 characters.
 
-For more information, you can refer [this](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug973-vivado-release-notes-install-license.pdf)
-
 **{SOURCES}** refers to *\\Vivado_tutorial_Using_IP_Integrator\\source\\Vivado_tutorial_Using_IP_Integrator*. You can download the source files for the labs from the cloned sources directory
 
 **{LABS}** refers to *C:\digital_design_tutorial\\*. It assumes that you will create the mentioned directory structure to carry out the labs of this workshop
@@ -414,7 +412,7 @@ module tutorial_tb(
     begin      
        expected_led[0] = ~swt[0];
        expected_led[1] = swt[1] & ~swt[2];
-        expected_led[3] = ~swt[2] & swt[3];
+        expected_led[3] = swt[2] & swt[3];
        expected_led[2] = expected_led[1] | expected_led[3];
        expected_led[7:4] = swt[7:4];
     end   
