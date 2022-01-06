@@ -549,7 +549,7 @@ Figure 29. Dock Window Button
 
 1. Expand the **tutorial_tb** instance, if necessary, in the *Scopes* window and select the **tut1** instance.
 
-   The SW* (7 to 0)] and LD* (7 to 0) signals will be displayed in the *Objects* window.
+   The SW* (7 to 0) and LD* (7 to 0) signals will be displayed in the *Objects* window.
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig30.png" alt="fig13" style="zoom:67%;" />
 

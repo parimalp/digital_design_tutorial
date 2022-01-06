@@ -4,6 +4,8 @@ XUP has developed a basic functional IP blocks [library](https://www.xilinx.com/
 
 The tutorial is developed to get the users (students) introduced to the digital design flow in Xilinx programmable devices using Vivado IP Integrator (IPI).  The guide - How to create your own IPI block - guides you through the procedure of creating a custom IPI block and then use it in your next design.
 
+In this tutorial, we will be using Vivado 2021.2 running on Windows 10.
+
 ## Supporting Material
 
 | Material Type                  | Link                                                         |
