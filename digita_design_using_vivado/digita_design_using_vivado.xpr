@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="56" Path="C:/vivado_tutorial/digita_design_using_vivado/digita_design_using_vivado.xpr">
+<Project Version="7" Minor="56" Path="C:/Users/lesliex/tutorial/digital_design_tutorial/digita_design_using_vivado/digita_design_using_vivado.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="212f105d5c764ba19f31bf090aedbbde"/>
@@ -47,7 +47,7 @@
     <Option Name="ActiveSimSet" Val="sim_1"/>
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
-    <Option Name="IPRepoPath" Val="$PPRDIR/../../Users/lesliex/tutorial/digital_design_tutorial/sources/Vivado_Tutorial_Using_IP_Integrator/XUP_LIB"/>
+    <Option Name="IPRepoPath" Val="$PPRDIR/../sources/Vivado_Tutorial_Using_IP_Integrator/XUP_LIB"/>
     <Option Name="IPOutputRepo" Val="$PCACHEDIR/ip"/>
     <Option Name="IPDefaultOutputPath" Val="$PGENDIR/sources_1"/>
     <Option Name="IPCachePermission" Val="read"/>
@@ -93,14 +93,14 @@
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
-        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_xup_inv_0_0/design_1_xup_inv_0_0.xci">
-          <Proxy FileSetName="design_1_xup_inv_0_0"/>
-        </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_xup_and2_0_0/design_1_xup_and2_0_0.xci">
           <Proxy FileSetName="design_1_xup_and2_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_xup_or2_0_0/design_1_xup_or2_0_0.xci">
           <Proxy FileSetName="design_1_xup_or2_0_0"/>
+        </CompFileExtendedInfo>
+        <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_xup_inv_0_0/design_1_xup_inv_0_0.xci">
+          <Proxy FileSetName="design_1_xup_inv_0_0"/>
         </CompFileExtendedInfo>
         <CompFileExtendedInfo CompFileName="design_1.bd" FileRelPathName="ip/design_1_xup_inv_0_1/design_1_xup_inv_0_1.xci">
           <Proxy FileSetName="design_1_xup_inv_0_1"/>
@@ -122,7 +122,7 @@
       <Filter Type="Constrs"/>
       <File Path="$PSRCDIR/constrs_1/imports/tutorial/tutorial_z2.xdc">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../Users/lesliex/tutorial/digital_design_tutorial/sources/Vivado_Tutorial_Using_IP_Integrator/tutorial/tutorial_z2.xdc"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../sources/Vivado_Tutorial_Using_IP_Integrator/tutorial/tutorial_z2.xdc"/>
           <Attr Name="ImportTime" Val="1642563054"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -137,7 +137,7 @@
       <Filter Type="Srcs"/>
       <File Path="$PSRCDIR/sim_1/imports/tutorial/tutorial_tb.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../Users/lesliex/tutorial/digital_design_tutorial/sources/Vivado_Tutorial_Using_IP_Integrator/tutorial/tutorial_tb.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../sources/Vivado_Tutorial_Using_IP_Integrator/tutorial/tutorial_tb.v"/>
           <Attr Name="ImportTime" Val="1640762137"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -217,7 +217,7 @@
     </Simulator>
   </Simulators>
   <Runs Version="1" Minor="15">
-    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7z020clg400-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="true" IncrementalCheckpoint="$PSRCDIR/utils_1/imports/synth_1/tutorial_tb.dcp" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/synth_1">
+    <Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc7z020clg400-1" ConstrsSet="constrs_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="true" IncrementalCheckpoint="$PPRDIR/../../../../../vivado_tutorial/digita_design_using_vivado/digita_design_using_vivado.srcs/utils_1/imports/synth_1/tutorial_tb.dcp" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PPRDIR/../../../../../vivado_tutorial/digita_design_using_vivado/digita_design_using_vivado.srcs/utils_1/imports/synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2021"/>
         <Step Id="synth_design"/>
@@ -227,7 +227,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="design_1_xup_inv_0_0_synth_1" Type="Ft3:Synth" SrcSet="design_1_xup_inv_0_0" Part="xc7z020clg400-1" ConstrsSet="design_1_xup_inv_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/design_1_xup_inv_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/design_1_xup_inv_0_0_synth_1">
+    <Run Id="design_1_xup_inv_0_0_synth_1" Type="Ft3:Synth" SrcSet="design_1_xup_inv_0_0" Part="xc7z020clg400-1" ConstrsSet="design_1_xup_inv_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/design_1_xup_inv_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PPRDIR/../../../../../vivado_tutorial/digita_design_using_vivado/digita_design_using_vivado.srcs/utils_1/imports/design_1_xup_inv_0_0_synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2021"/>
         <Step Id="synth_design"/>
@@ -237,7 +237,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="design_1_xup_and2_0_0_synth_1" Type="Ft3:Synth" SrcSet="design_1_xup_and2_0_0" Part="xc7z020clg400-1" ConstrsSet="design_1_xup_and2_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/design_1_xup_and2_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/design_1_xup_and2_0_0_synth_1">
+    <Run Id="design_1_xup_and2_0_0_synth_1" Type="Ft3:Synth" SrcSet="design_1_xup_and2_0_0" Part="xc7z020clg400-1" ConstrsSet="design_1_xup_and2_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/design_1_xup_and2_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PPRDIR/../../../../../vivado_tutorial/digita_design_using_vivado/digita_design_using_vivado.srcs/utils_1/imports/design_1_xup_and2_0_0_synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2021"/>
         <Step Id="synth_design"/>
@@ -247,7 +247,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="design_1_xup_or2_0_0_synth_1" Type="Ft3:Synth" SrcSet="design_1_xup_or2_0_0" Part="xc7z020clg400-1" ConstrsSet="design_1_xup_or2_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/design_1_xup_or2_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/design_1_xup_or2_0_0_synth_1">
+    <Run Id="design_1_xup_or2_0_0_synth_1" Type="Ft3:Synth" SrcSet="design_1_xup_or2_0_0" Part="xc7z020clg400-1" ConstrsSet="design_1_xup_or2_0_0" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/design_1_xup_or2_0_0_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PPRDIR/../../../../../vivado_tutorial/digita_design_using_vivado/digita_design_using_vivado.srcs/utils_1/imports/design_1_xup_or2_0_0_synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2021"/>
         <Step Id="synth_design"/>
@@ -257,7 +257,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="design_1_xup_inv_0_1_synth_1" Type="Ft3:Synth" SrcSet="design_1_xup_inv_0_1" Part="xc7z020clg400-1" ConstrsSet="design_1_xup_inv_0_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/design_1_xup_inv_0_1_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PSRCDIR/utils_1/imports/design_1_xup_inv_0_1_synth_1">
+    <Run Id="design_1_xup_inv_0_1_synth_1" Type="Ft3:Synth" SrcSet="design_1_xup_inv_0_1" Part="xc7z020clg400-1" ConstrsSet="design_1_xup_inv_0_1" Description="Vivado Synthesis Defaults" AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" Dir="$PRUNDIR/design_1_xup_inv_0_1_synth_1" IncludeInArchive="true" IsChild="false" AutoIncrementalDir="$PPRDIR/../../../../../vivado_tutorial/digita_design_using_vivado/digita_design_using_vivado.srcs/utils_1/imports/design_1_xup_inv_0_1_synth_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2021"/>
         <Step Id="synth_design"/>
@@ -267,7 +267,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/impl_1">
+    <Run Id="impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="constrs_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" State="current" Dir="$PRUNDIR/impl_1" SynthRun="synth_1" IncludeInArchive="true" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PPRDIR/../../../../../vivado_tutorial/digita_design_using_vivado/digita_design_using_vivado.srcs/utils_1/imports/impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2021"/>
         <Step Id="init_design"/>
@@ -285,7 +285,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="design_1_xup_inv_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="design_1_xup_inv_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="design_1_xup_inv_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/design_1_xup_inv_0_0_impl_1">
+    <Run Id="design_1_xup_inv_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="design_1_xup_inv_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="design_1_xup_inv_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PPRDIR/../../../../../vivado_tutorial/digita_design_using_vivado/digita_design_using_vivado.srcs/utils_1/imports/design_1_xup_inv_0_0_impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2021"/>
         <Step Id="init_design"/>
@@ -302,7 +302,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="design_1_xup_and2_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="design_1_xup_and2_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="design_1_xup_and2_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/design_1_xup_and2_0_0_impl_1">
+    <Run Id="design_1_xup_and2_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="design_1_xup_and2_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="design_1_xup_and2_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PPRDIR/../../../../../vivado_tutorial/digita_design_using_vivado/digita_design_using_vivado.srcs/utils_1/imports/design_1_xup_and2_0_0_impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2021"/>
         <Step Id="init_design"/>
@@ -319,7 +319,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="design_1_xup_or2_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="design_1_xup_or2_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="design_1_xup_or2_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/design_1_xup_or2_0_0_impl_1">
+    <Run Id="design_1_xup_or2_0_0_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="design_1_xup_or2_0_0" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="design_1_xup_or2_0_0_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PPRDIR/../../../../../vivado_tutorial/digita_design_using_vivado/digita_design_using_vivado.srcs/utils_1/imports/design_1_xup_or2_0_0_impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2021"/>
         <Step Id="init_design"/>
@@ -336,7 +336,7 @@
       <Report Name="ROUTE_DESIGN.REPORT_METHODOLOGY" Enabled="1"/>
       <RQSFiles/>
     </Run>
-    <Run Id="design_1_xup_inv_0_1_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="design_1_xup_inv_0_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="design_1_xup_inv_0_1_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PSRCDIR/utils_1/imports/design_1_xup_inv_0_1_impl_1">
+    <Run Id="design_1_xup_inv_0_1_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="design_1_xup_inv_0_1" Description="Default settings for Implementation." AutoIncrementalCheckpoint="false" WriteIncrSynthDcp="false" SynthRun="design_1_xup_inv_0_1_synth_1" IncludeInArchive="false" IsChild="false" GenFullBitstream="true" AutoIncrementalDir="$PPRDIR/../../../../../vivado_tutorial/digita_design_using_vivado/digita_design_using_vivado.srcs/utils_1/imports/design_1_xup_inv_0_1_impl_1">
       <Strategy Version="1" Minor="2">
         <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2021"/>
         <Step Id="init_design"/>
