@@ -1,8 +1,8 @@
-# Vivado Tutorial Using IP Integrator
+Vivado Tutorial Using IP Integrator
 
 ## Introduction
 
-This tutorial guides you through the design flow using Xilinx Vivado software to create a simple digital circuit using Vivado IP Integrator (IPI). A typical design flow consists of creating a Vivado project, optionally setting a user-defined IP library settings, creating a block design using various IP, creating a HDL wrapper, creating and/or adding user constraint file(s), optionally running behavioral simulation, synthesizing the design, implementing the design, generating the bitstream, and finally verifying the functionality in the hardware by downloading the generated bitstream file.  You will go through the typical design flow targeting the Spartan-50T based Boolean Board and Zynq-7020 based PYNQ-Z2
+This tutorial guides you through the design flow using Xilinx Vivado software to create a simple digital circuit using Vivado IP Integrator (IPI). A typical design flow consists of creating a Vivado project, optionally setting a user-defined IP library settings, creating a block design using various IP, creating a HDL wrapper, creating and/or adding user constraint file(s), optionally running behavioral simulation, synthesizing the design, implementing the design, generating the bitstream, and finally verifying the functionality in the hardware by downloading the generated bitstream file.  You will go through the typical design flow targeting the Spartan-50T based Boolean Board and Zynq-7020 based PYNQ-Z2. For Z2, we will be using an [RPI add-on board](https://www.tulembedded.com/FPGA/Products_RPI_Logic_Board.html), for the peripheral resources on the add-on board. This board using the raspberry pi extension slot to provide extra accessible buttons and switches.
 
 ## Objectives
 
@@ -26,7 +26,7 @@ After completing this tutorial, you will be able to:
 
 This tutorial is broken into steps that consist of general overview statements providing information on the detailed instructions that follow. Follow these detailed instructions to progress through the tutorial.
 
-Design Description
+### Design Description
 
 The design consists of some inputs directly connected to the corresponding output LEDs. Other inputs are logically operated on before the results are output on the remaining LEDs as shown in **Figure 1**. 
 
@@ -292,8 +292,13 @@ Hierarchical design
 
 Constraints file added for Boolean Board
 
-6. In the *Sources* pane, expand the *Constraints* folder and double-click the **tutorial_boolean.xdc** entry to open the file in text mode.
-7. Lines 10-16 define the pin locations of the input SW0~6 and lines 21-27 define the pin locations of the output LD0~6. The SW7 and LD7 are deliberately not defined so you can learn how to enter them using other methods.
+6. In the *Sources* pane, expand the *Constraints* folder and double-click the **tutorial_boolean.xdc**(for Boolean) or **tutorial_z2.xdc**(for PYNQ-Z2) entry to open the file in text mode.
+
+7. **In tutorial_boolean.xdc**: Lines 10-16 define the pin locations of the input SW0~6 and lines 21-27 define the pin locations of the output LD0~6. 
+
+   **In tutorial_z2.xdc**: Lines 2-15 define the pin locations of the input SW0~6 and lines 24-37 define the pin locations of the output LD0~6. 
+
+   The SW7 and LD7 are deliberately not defined so you can learn how to enter them using other methods.
 
 ### Perform RTL analysis on the source file.
 
@@ -327,13 +332,21 @@ A logic View of the design
 
 I/O Planning layout view of Boolean
 
+![image-20220119121904320](img/Vivado_Tutorial_Using_IP_Integrator/image-20220119121904320.png)
+
+I/O Planning layout view of PYNQ-Z2
+
 2. Click under the *I/O Std* column across the **LD7** row and select *LVCOMS33*. This assigns the LVCMOS33 standard to the site.
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig24.png" alt="fig13" style="zoom:67%;" />
 
-Assigning I/O standard to Boolean
+Assigning I/O standard
 
-3. Similarly, click under the *Site* column across LD7 row to see a drop-down box appear. Type **E** (for Boolean)  in the field to jump to Exx  pins, scroll-down until you see E5 (Boolean), select E5 (Boolean) and hit the *Enter* key to assign the pin.
+3. Similarly, click under the *Site* column across LD7 row to see a drop-down box appear. 
+
+   **For Boolean**: Type **E**  in the field to jump to Exx  pins, scroll-down until you see E5 , select E5 and hit the *Enter* key to assign the pin.
+
+   **For PYNQ-Z2**: Type **M**  in the field to jump to Mxx  pins, scroll-down until you see M14 , select M14 and hit the *Enter* key to assign the pin.
 
 4. You can also assign the pin constraints using tcl commands. Type in the following command in the Tcl Console tab to assign the *P2* (Boolean) pin location and the *LVCSMOS33* I/O standard to **SW7** hitting the Enter key after each command. 
 
@@ -342,6 +355,11 @@ Assigning I/O standard to Boolean
    ```tcl
    set_property -dict {PACKAGE_PIN P2 IOSTANDARD LVCMOS33} [get_ports {SW7}]
    ```
+   **PYNQ-Z2**
+   
+   ```tcl
+   set_property -dict {PACKAGE_PIN W9 IOSTANDARD LVCMOS33} [get_ports {SW7}]
+   ```
 
    Observe the pin and I/O standard assignments in the I/O Ports tab. You can also assign the pin by selecting its entry (SW7) in the I/O ports tab, and dragging it to the Package view, and placing it at the P2 (Boolean) location. You can assign the LVCMOS33 standard by selecting its entry (SW7), selecting Configure tab of the I/O Port Properties window, followed by clicking the drop-down button of the I/O standard field, and selecting LVCMOS33.
 
@@ -349,7 +367,7 @@ Assigning I/O standard to Boolean
 
 Assigning I/O standard through the I/O Port Properties form
 
-5. Select **File > Constraints > Save ** and click **OK** to save the constraints in the **tutorial_boolean.xdc** file.
+5. Select **File > Constraints > Save ** and click **OK** to save the constraints in the **tutorial_boolean.xdc** or **tutorial_z2.xdc** file.
 
    ## Step 4 Simulate the Design using the XSim Simulator
 
@@ -657,7 +675,7 @@ Selecting a net
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig37.png" alt="fig13" style="zoom:67%;" />
 
-Viewing implemented design for Boolean
+Viewing implemented design
 
 5. Close the implemented design view and select the **Project Summary** tab (you may have to change to the Default Layout view) and observe the results.
 
@@ -711,6 +729,10 @@ Notice that we monitored the expected led output at 10 ns after the input is cha
 
  Board settings for Boolean
 
+For PYNQ-Z2, make sure that the jumper is set up **USB**(the left arrow) and **JTAG**(the right arrow)
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/z2_setup.png" alt="fig13" style="zoom:67%;" />
+
 3. Power **ON** the switch on the board.
 
 4. Select the *Open Hardware Manager* option and click **OK**.
@@ -735,6 +757,10 @@ Opened hardware session for Boolean
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig42.png" alt="fig13" style="zoom:67%;" />
 
 Programming file for Boolean
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/image-20220119153223811.png" alt="image-20220119153223811" style="zoom:67%;" />
+
+Programming file for PYNQ-Z2
 
 8. Click **Program** to program the FPGA with the selected bitstream.
 
