@@ -603,7 +603,7 @@ Running simulation for additional 500 ns
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig32.png" alt="fig13" style="zoom:67%;" />
 
-Project Summary view
+Project Summary view(Taking Boolean as an example)
 
 Click on the various links to see what information they provide and which allows you to change the synthesis settings.
 
