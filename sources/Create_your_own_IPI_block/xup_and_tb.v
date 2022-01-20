@@ -11,7 +11,7 @@ module xup_and_tb(
     wire y;
     wire [2:0] y_1;
     
-    system_wrapper DUT(.a(ain), .a_1(ain_1), .b(bin), .b_1(bin_1), .y(y), .y_1(y_1));
+    design_1_wrapper DUT(.a(ain), .a_0(ain_1), .b(bin), .b_0(bin_1), .y(y), .y_0(y_1));
     
  
     initial
