@@ -25,4 +25,4 @@ In this tutorial, we will be using Vivado 2021.2 running on Windows 10.
 | Vivado Tutorial using XUP IPI Library | [sources](./sources/Vivado_Tutorial_Using_IP_Integrator) |
 | Create your own IPI block             | [sources](./sources/Vivado_Tutorial_Using_IP_Integrator)                                              |
 
-**Note**: This tutorial is under construction, but currently, only Boolean Board is supported. Extension and support for PYNQ-Z2 will be added sooner. 
+**Note**: This tutorial is under construction
