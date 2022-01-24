@@ -16,8 +16,7 @@ In this tutorial, we will be using Vivado 2021.2 running on Windows 10.
 | PYNQ-Z2 Master XDC File        | [PYNQ-Z2 Master XDC](https://dpoauwgwqsy2x.cloudfront.net/Download/pynq-z2_v1.0.xdc.zip) |
 | PYNQ-Z2 Schematic              | [Schematics (PDF)](https://dpoauwgwqsy2x.cloudfront.net/Download/TUL_PYNQ_Schematic_R12.pdf) |
 | PYNQ-Z2 Reference Manual       | [PYNQ-Z2 User Manual (PDF)](https://dpoauwgwqsy2x.cloudfront.net/Download/pynqz2_user_manual_v1_0.pdf) |
-| XUP LIB                        | [Library Components List.pdf](https://www.xilinx.com/content/dam/xilinx/support/documentation/university/Vivado-Teaching/Digital-Design/2014x/docs-pdf/Library_Components_List.pdf)
-[Libarary File (Zip)](https://www.xilinx.com/content/dam/xilinx/support/documentation/university/Vivado-Teaching/Digital-Design/2014x/labs-source/XUP_LIB.zip)|
+| XUP LIB                        | [Library Components List.pdf](https://www.xilinx.com/content/dam/xilinx/support/documentation/university/Vivado-Teaching/Digital-Design/2014x/docs-pdf/Library_Components_List.pdf) \| [Libarary File (zip)](https://www.xilinx.com/content/dam/xilinx/support/documentation/university/Vivado-Teaching/Digital-Design/2014x/labs-source/XUP_LIB.zip)|
 
 ## Labs Material
 
