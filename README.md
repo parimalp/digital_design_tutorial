@@ -1,8 +1,8 @@
 # Digital Design Using Vivado IPI
 
-XUP has developed a basic functional IP blocks [library](https://www.xilinx.com/content/dam/xilinx/support/documentation/university/Vivado-Teaching/Digital-Design/2014x/labs-source/XUP_LIB.zip) which can be used to create digital designs in a schematic view. The tutorial and laboratory exercises are created and available for use with the XUP supported boards. The laboratory material is targeted for use in a introductory Digital Design course where professors want to include FPGA technology in the course to validate the learned principles through creating designs using Vivado.
+XUP has developed a basic functional IP blocks [library](https://www.xilinx.com/content/dam/xilinx/support/documentation/university/Vivado-Teaching/Digital-Design/2014x/labs-source/XUP_LIB.zip) which can be used to create digital designs in a schematic view. The tutorial and laboratory exercises are created and available for use with the XUP supported boards. The laboratory material is targeted for use in a introductory Digital Design course where professors want to introduce FPGA technology in the course to validate the learned principles through creating designs using Vivado.
 
-The tutorial is developed to get the users (students) introduced to the digital design flow in Xilinx programmable devices using Vivado IP Integrator (IPI).  The guide - How to create your own IPI block - guides you through the procedure of creating a custom IPI block and then use it in your next design.
+The tutorial is developed to get the users (students) introduced to the digital design flow in XXilinx programmable devices using Vivado IP Integrator (IPI).  The guide - How to create your own IPI block - guides you through the procedure of creating a custom IPI block and then use it in your next design.
 
 In this tutorial, we will be using Vivado 2021.2 running on Windows 10.
 

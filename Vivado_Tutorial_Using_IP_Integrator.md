@@ -2,7 +2,7 @@ Vivado Tutorial Using IP Integrator
 
 ## Introduction
 
-This tutorial guides you through the design flow using Xilinx Vivado software to create a simple digital circuit using Vivado IP Integrator (IPI). A typical design flow consists of creating a Vivado project, optionally setting a user-defined IP library settings, creating a block design using various IP, creating a HDL wrapper, creating and/or adding user constraint file(s), optionally running behavioral simulation, synthesizing the design, implementing the design, generating the bitstream, and finally verifying the functionality in the hardware by downloading the generated bitstream file.  You will go through the typical design flow targeting the Spartan-50T based Boolean Board and Zynq-7020 based PYNQ-Z2. For Z2, we will be using an [RPI add-on board](https://www.tulembedded.com/FPGA/Products_RPI_Logic_Board.html), for the peripheral resources on the add-on board. This board using the raspberry pi extension slot to provide extra accessible buttons and switches.
+This tutorial guides you through the design flow using Xilinx Vivado software to create a simple digital circuit using Vivado IP Integrator (IPI). A typical design flow consists of creating a Vivado project, optionally setting a user-defined IP library settings, creating a block design using various IP, creating a HDL wrapper, creating and/or adding user constraint file(s), optionally running behavioral simulation, synthesizing the design, implementing the design, generating the bitstream, and finally verifying the functionality in the hardware by downloading the generated bitstream file.  You will go through the typical design flow targeting the Spartan 7-50 based Boolean Board and Zynq-7020 based PYNQ-Z2. For Z2, we will be using an [RPI add-on board](https://www.tulembedded.com/FPGA/Products_RPI_Logic_Board.html), for adding more I/O resources. This board using the Raspberry Pi extension slot to provide extra accessible buttons and switches.
 
 ## Objectives
 
@@ -10,7 +10,7 @@ After completing this tutorial, you will be able to:
 
 - Create a Vivado project targeting a specific FPGA device located on the Boolean or PYNQ-Z2 board
 
--  Use the provided partially completed Xilinx Design Constraint (XDC) file to constrain some of the pin locations
+-  Use the provided partially completed Xilinx Design Constraint (XDC) file to constrain some of the I/O pin locations
 
 -  Add additional constraints using the Tcl scripting feature of Vivado
 
@@ -56,15 +56,17 @@ The design consists of some inputs directly connected to the corresponding outpu
 
 The absolute path for the source code should only contain ascii characters. Deep path should also be avoided since the maximum supporting length of path for Windows is 260 characters.
 
-**{SOURCES}** refers to *\\Vivado_tutorial_Using_IP_Integrator\\source\\Vivado_tutorial_Using_IP_Integrator*. You can download the source files for the labs from the cloned sources directory
+**{SOURCES}** refers to *\\Vivado_tutorial_Using_IP_Integrator\\source\\Vivado_tutorial_Using_IP_Integrator*. You can use the source files from the cloned repository's *sources* directory
 
-**{LABS}** refers to *C:\digital_design_tutorial\\*. It assumes that you will create the mentioned directory structure to carry out the labs of this workshop
+**{LABS}** refers to *C:\digital_design_tutorial\\*. It assumes that you will create the mentioned directory structure to carry out the labs of this tutorial
+
+**{BOARD}** refers to target *Boolean* and *Z2* boards. 
 
 ## Step 1 Create a Vivado Project using IDE
 
 ### Create a Vivado Project
 
-Launch Vivado and create a project targeting the *Boolean* and using the Verilog HDL. Use the provided Verilog source files and *tutorial_boolean.xdc*  file from the {SOURCES} directory.
+Launch Vivado and create a project targeting the **{BOARD}** and using the Verilog HDL. Use the provided Verilog source files and *tutorial_**{BOARD}**.xdc*  file from the {SOURCES} directory.
 
 1. Open Vivado by selecting **Start > Xilinx Design Tools > Vivado 2021.2**
 
@@ -99,13 +101,14 @@ Launch Vivado and create a project targeting the *Boolean* and using the Verilog
 
 <center>Part selection for Boolean </center>
 
+
 ![fig3](img/Vivado_Tutorial_Using_IP_Integrator/fig4.png)
 
 <center>Part selection for PYNQ-Z2 </center>
 
 11. Click **Finish** to create the Vivado project. 
 
-    Use the Windows Explorer and look at the **{LABS}** directory. You will find that file structure as shown below
+    Use the Windows Explorer and look at the **{LABS}** directory. You will find the file structure as shown below
 
     ```
     //File structure of created vivado project
@@ -158,7 +161,7 @@ Invoking IP Integrator to create a block diagram
 
 2. Click **OK** to create a block design named *design_1*
 
-3. IP from the catalog can be added in different ways. Click on *Add IP* in the message at the top of the *Diagram* panel, or press Ctrl + I, or right-click anywhere in the Diagram workspace and select Add IP
+3. IP from the catalog can be added in different ways. Click on *Add IP* button in the top of the *Diagram* panel, or press Ctrl + I, or right-click anywhere in the Diagram workspace and select Add IP
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig9.png" alt="fig8" style="zoom:67%;" />
 
@@ -170,7 +173,7 @@ Invoking IP Integrator to create a block diagram
 
 Add an inverter to the design
 
-5. Similarly, another instance of an inverter.
+5. Similarly, add another instance of an inverter.
 
 6. Add two instances of 2-input AND gate and an instance of 2-input OR gate.
 
@@ -210,14 +213,14 @@ Connecting Instances
 
   This diagram is similar to the logic connected between SW1, SW2, SW3, and LD2.
 
-8. Make input ports of the **xup_inv_1**, *a* port of the **xup_and2_0**, and *b* port of the **xup_and2_1** instances external.
+8. Make input ports of the **xup_inv_1**, *b* port of the **xup_and2_0**, and *a* port of the **xup_and2_1** instances external.
 9. Similarly, make the output port of the **xup_or2_0** instance external.
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig15.png" alt="fig13" style="zoom:67%;" />
 
 Making ports external
 
-10. Change the name of *a* to **SW1**, *a_1* to **SW2**, *b* to **SW3**, and *y* to **LD2**.
+10. Change the name of *a_0* to **SW1**, *a_1* to **SW2**, *b* to **SW3**, and *y* to **LD2**.
 
 11. Right-click somewhere on the canvas and select Create Port.
 
@@ -233,7 +236,7 @@ Creating an output port
 
 14. Connect the input port *a* of the **xup_and2_1** instance to output port of the instance **xup_inv_1**.
 
-15. Connect the output port of the **xup_and2_0** to **LD1** and **xup_and2_1** to **LD3**. Click on the re-draw button.
+15. Connect the output port of the **xup_and2_1** to **LD1** and **xup_and2_0** to **LD3**. Click on the re-draw button.
 
     The diagram will look similar to shown below.
 
@@ -245,7 +248,7 @@ Partially completed design
 
 1. Right-click on the canvas and create an input port *SW4*.
 
-2. Similarly, create *SW5*, *SW6*, and *SW7* as input ports, and *LD4*, *LD5*, *LD6*, and *LD7* as output ports.
+2. Similarly, create *SW4*, *SW5*, *SW6*, and *SW7* as input ports, and *LD4*, *LD5*, *LD6*, and *LD7* as output ports.
 
 3. Using wiring tool, connect *SW4* to *LD4*, *SW5* to *LD5*, *SW6* to *LD6*, and *SW7* to *LD7*.
 
@@ -276,7 +279,7 @@ Hierarchical design
 3. Double-click the **design_1_wrapper.v** entry to open the file in text mode and observe the instantiation of the *design_1* module.
 4. Double-click the **design_1.v** entry to open the file in text mode and observe the instantiation of the lower-level modules.
 
-### Add tutorial_boolean.xdc (for Boolean Board) constraints source and analyze the content.
+### Add tutorial_{BOARD}.xdc constraints source and analyze the content.
 
 1. Click on the **Add Sources** under the *Project Manager* group in the *Flow Navigator* window.
 
@@ -284,17 +287,17 @@ Hierarchical design
 
 3. Click **Add Files…** and browse to **{SOURCES}\tutorial**
 
-4. Select **tutorial_boolean.xdc** (for Boolean Board) and click **OK**.
+4. Select **tutorial_{BOARD}.xdc** (for Boolean Board) and click **OK**.
 
 5. Click **Finish** to close the window and add the constraints file in the project under the Constraints group.
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig20.png" alt="fig13" style="zoom:67%;" />
 
-Constraints file added for Boolean Board
+Constraints file added for the Boolean board
 
-6. In the *Sources* pane, expand the *Constraints* folder and double-click the **tutorial_boolean.xdc**(for Boolean) or **tutorial_z2.xdc**(for PYNQ-Z2) entry to open the file in text mode.
+6. In the *Sources* pane, expand the *Constraints* folder and double-click the **tutorial_{BOARD}.xdc**(**tutorial_boolean** for Boolean or **tutorial_z2.xdc**(for PYNQ-Z2) entry to open the file in text mode.
 
-7. **In tutorial_boolean.xdc**: Lines 10-16 define the pin locations of the input SW0~6 and lines 21-27 define the pin locations of the output LD0~6. 
+7. **In tutorial_{BOARD}.xdc**: Lines 10-16 define the pin locations of the input SW0~6 and lines 21-27 define the pin locations of the output LD0~6. 
 
    **In tutorial_z2.xdc**: Lines 2-15 define the pin locations of the input SW0~6 and lines 24-37 define the pin locations of the output LD0~6. 
 

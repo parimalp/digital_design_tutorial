@@ -2,11 +2,11 @@
 
 ## Introduction
 
-This lab guides you through creating basic elements which can be used in basic digital design course. The steps can be used to extend it to creating IP of any complexity.
+This tutorial guides you through creating basic elements which can be used in basic digital design course. The steps can be used to extend it to creating IP of any complexity.
 
 ## Objectives
 
-After completing this lab, you will be able to:
+After completing this tutorial, you will be able to:
 
 - Use Create and Package IP feature of Vivado to create IP
 
@@ -16,29 +16,27 @@ After completing this lab, you will be able to:
 
 ## Procedure
 
-This lab is separated into steps that consist of general overview statements that provide information on the detailed instructions that follow. Follow these detailed instructions to progress through the lab.
+This tutorial is separated into steps that consist of general overview statements that provide information on the detailed instructions that follow. Follow these detailed instructions to progress through the tutorial.
 
-This lab comprises 4 primary steps: You will create two custom IPs in Vivado, create another project to use the created IPs, simulate the design, and verify the functionality in the hardware. 
+This tutorial comprises 4 primary steps: You will create two custom IPs in Vivado, create another project to use the created IPs, simulate the design, and verify the functionality in the hardware. 
 
-## Hint
-
-###  In the instructions for the labs
+##  In the instructions for the tutorial
 
 The absolute path for the source code should only contain ascii characters. Deep path should also be avoided since the maximum supporting length of path for Windows is 260 characters.
 
-**{SOURCES}** refers to *\\digital_design_tutorial\\source\\create_your_own_IPI_block*. You can download the source files for the labs from the cloned sources directory
+**{SOURCES}** refers to *\\digital_design_tutorial\\source\\create_your_own_IPI_block*. You can download the source files for the tutorials from the cloned sources directory
 
-**{LABS}** refers to *C:\digital_design_tutorial\\*. It assumes that you will create the mentioned directory structure to carry out the labs of this workshop
+**{tutorialS}** refers to *C:\digital_design_tutorial\\*. It assumes that you will create the mentioned directory structure to carry out the tutorials of this workshop
 
 ## Step 1 Create a Project for Creating IP in Vivado
 
-### Create a Vivado project calling it as xup_and2 in the {SOURCES} directory using the provided xup_and2.v source file targeting the default Spartan-7 or Zynq-7000 family device*.*  Synthesize the design.
+### Create a Vivado project calling it as xup_and2 in the {SOURCES} directory using the provided xup_and2.v source file targeting the default Spartan-7 or Zynq-7000 family device.  Synthesize the design.
 
-1. Open Vivado by selecting **Start > All Programs >** **Xilinx Design Tools > Vivado 2021.2 > Vivado 2021.2**
+1. Open Vivado 2021.2
 
 2. Click the *Create New Project* link.
 
-3. Click **Next**, and name the project **xup_and2** in the **{LABS}** directory.
+3. Click **Next**, and name the project **xup_and2** in the **{tutorialS}** directory.
 
 4. Click **Next** and make sure that *RTL Project* is selected.
 
@@ -81,7 +79,7 @@ Setting up the Library and Category fields
 
    The summary form will be displayed showing various components and files used in creating the IP as it stands at the moment. We will customize some of the components. Click **OK**.
 
-   The **Package IP – xup_and2** tab will be opened showing the default values and the available options.
+   The **Package IP – xup_and2** tab will be opened showing the default values and the avaitutorialle options.
 
 ![image-20220120112544771](img/Building_Basic_Elements_for_IPI/fig2.png)
 
@@ -93,7 +91,7 @@ The IP Identification default values
 
 The IP Identification customized fields
 
-5. Select **IP Compatibility**. This shows the different Xilinx FPGA Families that the IP supports. The value is inherited from the device selected for the project. 
+5. Select **IP Compatibility**. This shows the different Xilinx FPGA Families that the IP can be used in. The value is inherited from the device selected for the project. 
 6. Right click in the *Family Support table* and select **Add Family…** from the menu.
 7. Select the **Zynq** and **Spartan7** families as we will be using this IP on the boards with these devices, and click **OK**.
 8. Click on **IP File Groups** and expand the sub-folders to see its content. You can add additional files, like testbench, but we won’t do that here.
@@ -102,7 +100,7 @@ The IP Identification customized fields
 
 ### Edit IP Customization Parameter with the desired default value and type of values allowed
 
-1. Click on the *IP Customization Parameters* and verify that delay parameter is included.
+1. Click on the *IP Customization Parameters* and verify that DELAY parameter is included since it is defined in the source file.
 
 ![image-20220120112544771](img/Building_Basic_Elements_for_IPI/fig5.png)
 
@@ -144,7 +142,7 @@ The IP GUI Customization
 7. Click **OK**.
 8. In the Vivado window click **File > Close Project.**
 
-### Create a Vivado project calling it as xup_and_vector in the {SOURCES} directory using the provided xup_and_vector.v source file targeting the default Spartan-7 and Zynq-7000 family device*.*  
+### Create a Vivado project calling it as xup_and_vector in the {SOURCES} directory using the provided xup_and_vector.v source file targeting the default Spartan-7 and Zynq-7000 family device.  
 
 1.   Open Vivado if it was closed.
 2.   Click the *Create New Project* link.
@@ -153,7 +151,7 @@ The IP GUI Customization
 5.   Click **Next** and make sure that **Verilog** is selected as the *Target language* and *Simulation language*. Click *Add Files*, browse to **{SOURCES}** and select **xup_and_vector.v**, and click **OK**.
 6.   Click **Next** two times until *Add Constraints* form is displayed*.*
 7.   Remove any constraint files listed, if any, and click **Next** to see the *Default Part* form.
-8.   Click **Next** with the **xc7s50csga324-1** part selected and then **Finish**.
+8.   Click **Next** with the Spartan-7 or Zynq-7000 part selected and then **Finish**.
 
 ### Set the library name and category if desired. Here you will use XUP as the library name and XUP_LIB as the category. You can change Vendor name if necessary.
 
@@ -175,7 +173,7 @@ The IP GUI Customization
 
    The summary form will be displayed showing various components and files used in creating the IP as it stands at the moment. We will customize some of the components. Click **OK**.
 
-   The **Package IP – xup_and_vector** tab will be opened showing the default values and the available options.
+   The **Package IP – xup_and_vector** tab will be opened showing the default values and the avaitutorialle options.
 
 4.   Make necessary changes to the IP *Identification* fields as shown.
 
@@ -217,15 +215,15 @@ The form will be displayed
 
  9.   Click **OK**.
 
- 10. Using the Windows Explorer, copy the generated xup_and2 and xup_and_vector folders into the xup_lib folder under **{LABS}** (create the folder if does not exist).
+ 10. Using the Windows Explorer, copy the generated xup_and2 and xup_and_vector folders into the xup_lib folder under **{tutorialS}** (create the folder if does not exist).
 
 ## Step 2 Create a Project for Testing the Created IPs 
 
-### Create an empty Vivado project calling it as xup_and_test in the **{SOURCES}** directory targeting the xc7s50csga324-1 device (for Boolean) or XC7Z020clg400-1 device (for PYNQ-Z2).  Setup the IP Repository to point to {LABS}\xup_lib directory. Add the xup_and2 to the IP catalog.
+### Create an empty Vivado project calling it as xup_and_test in the **{SOURCES}** directory targeting the xc7s50csga324-1 device (for Boolean) or XC7Z020clg400-1 device (for PYNQ-Z2).  Setup the IP Repository to point to {tutorialS}\xup_lib directory. 
 
 1. Click the *Create New Project* link.
 
-2. Set the directory path to **{LABS}** and the project name as **xup_and_test**.
+2. Set the directory path to **{tutorialS}** and the project name as **xup_and_test**.
 
 3. Click **Next** and make sure that the *RTL Project* type is selected.
 
@@ -233,13 +231,13 @@ The form will be displayed
 
 5. Click **Next** three times until *Default Part* form is displayed*.*
 
-6. Using the appropriate filters, selectxc7s50csga324-1 device (for Boolean) or XC7Z020clg400-1 device (for PYNQ-Z2), then click **Next**, and then **Finish**.
+6. Using the appropriate filters, select xc7s50csga324-1 device (for Boolean) or XC7Z020clg400-1 device (for PYNQ-Z2), then click **Next**, and then **Finish**.
 
 7. Click **Project Settings** in the *Flow Navigator* pane.
 
 8. Select **IP** in the left pane of the *Project Settings* form.
 
-9. Click on the **Add Repository…** button, browse to **{LABS}\xup_lib** and click **Select**.
+9. Click on the **Add Repository…** button, browse to **{tutorialS}\xup_lib** and click **Select**.
 
    The directory will be scanned and IP entries will appear in the **Selected Repository** window.
 
@@ -265,7 +263,7 @@ Specify IP Repository
 
 7.   Right-click on the *y* port and select **Make External**.
 
-8.   Similarly, select the *ain* and *bin* ports and make them external.
+8.   Similarly, select the *a* and *b* ports and make them external.
 
 9.   The block diagram should look like below.
 
@@ -283,7 +281,7 @@ The block dsign
 
 4.   Right-click on the *y* port and select **Make External**.
 
-5.   Similarly, select the *ain* and *bin* ports and make them external.
+5.   Similarly, select the *a* and *b* ports and make them external.
 
 6.   The block diagram should look like below.
 
@@ -341,7 +339,7 @@ The IP Model
 
 Hierarchy for simulation
 
-### Launch the simulator which will automatically elaborate the model source file, load the simulation model, and run the simulation.
+### Launch the simulator which will automatically etutorialorate the model source file, load the simulation model, and run the simulation.
 
 1. In Vivado, select **Simulation > Run Simulation > Run Behavioral Simulation** to launch the simulator.
 
