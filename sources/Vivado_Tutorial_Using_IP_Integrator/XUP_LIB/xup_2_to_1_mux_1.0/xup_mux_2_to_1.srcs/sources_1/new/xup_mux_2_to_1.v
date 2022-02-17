@@ -5,10 +5,10 @@
 module xup_mux_2_to_1 #(parameter DELAY = 3)(
     input a,
     input b,
-    input select,
+    input sel,
     output y
     );
     
-    assign #DELAY y= (a & ~select) | (b & select);
+    assign #DELAY y= (a & ~sel) | (b & sel);
         
 endmodule

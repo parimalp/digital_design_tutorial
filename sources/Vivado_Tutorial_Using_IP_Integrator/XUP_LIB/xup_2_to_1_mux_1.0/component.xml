@@ -65,7 +65,7 @@
 				</spirit:wire>
 			</spirit:port>
 			<spirit:port>
-				<spirit:name>select</spirit:name>
+				<spirit:name>sel</spirit:name>
 				<spirit:wire>
 					<spirit:direction>in</spirit:direction>
 					<spirit:wireTypeDefs>
