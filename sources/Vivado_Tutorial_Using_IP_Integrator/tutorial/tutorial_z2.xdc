@@ -27,11 +27,5 @@ set_property PACKAGE_PIN W6 [get_ports LD3]
 set_property IOSTANDARD LVCMOS33 [get_ports LD3]
 set_property PACKAGE_PIN Y7 [get_ports LD4]
 set_property IOSTANDARD LVCMOS33 [get_ports LD4]
-set_property PACKAGE_PIN F20 [get_ports LD5]
-set_property IOSTANDARD LVCMOS33 [get_ports LD5]
-set_property PACKAGE_PIN N16 [get_ports LD6]
-set_property IOSTANDARD LVCMOS33 [get_ports LD6]
-set_property PACKAGE_PIN M14 [get_ports LD7]
-set_property IOSTANDARD LVCMOS33 [get_ports LD7]
 
-set_property -dict {PACKAGE_PIN W9 IOSTANDARD LVCMOS33} [get_ports SW7]
+

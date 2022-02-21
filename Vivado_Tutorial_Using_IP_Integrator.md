@@ -58,7 +58,7 @@ The absolute path for the source code should only contain ascii characters. Deep
 
 **{SOURCES}** refers to *\\Vivado_tutorial_Using_IP_Integrator\\source\\Vivado_tutorial_Using_IP_Integrator*. You can use the source files from the cloned repository's *sources* directory
 
-**{LABS}** refers to *C:\digital_design_tutorial\\*. It assumes that you will create the mentioned directory structure to carry out the labs of this tutorial
+**{TUTORIAL}** refers to *C:\digital_design_tutorial\\*. It assumes that you will create the mentioned directory structure to carry out the labs of this tutorial
 
 **{BOARD}** refers to target *Boolean* and *Z2* boards. 
 
@@ -72,7 +72,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 2. Click **Create New Project** to start the wizard. You will see *Create A New Vivado Project* dialog box. Click **Next**.
 
-3. Click the Browse button of the *Project location* field of the **New Project** form, browse to **{LABS}**, and click **Select**.
+3. Click the Browse button of the *Project location* field of the **New Project** form, browse to **{TUTORIAL}**, and click **Select**.
 
 4. Enter **tutorial** in the *Project name* field.  Make sure that the *Create Project Subdirectory* box is checked.  Click **Next**.
 
@@ -108,7 +108,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 11. Click **Finish** to create the Vivado project. 
 
-    Use the Windows Explorer and look at the **{LABS}** directory. You will find the file structure as shown below
+    Use the Windows Explorer and look at the **{TUTORIAL}** directory. You will find the file structure as shown below
 
     ```
     //File structure of created vivado project
@@ -335,7 +335,7 @@ A logic View of the design
 
 I/O Planning layout view of Boolean
 
-![image-20220119121904320](img/Vivado_Tutorial_Using_IP_Integrator/image-20220119121904320.png)
+![image-20220119121904320](img/Vivado_Tutorial_Using_IP_Integrator/Z2_IOplanning.png)
 
 I/O Planning layout view of PYNQ-Z2
 
@@ -345,11 +345,11 @@ I/O Planning layout view of PYNQ-Z2
 
 Assigning I/O standard
 
-3. Similarly, click under the *Site* column across LD7 row to see a drop-down box appear. 
+3. Similarly, click under the *Site* column across LD5 row to see a drop-down box appear. 
 
-   **For Boolean**: Type **E**  in the field to jump to Exx  pins, scroll-down until you see E5 , select E5 and hit the *Enter* key to assign the pin.
+   **For Boolean**: Type **E**  in the field to jump to Exx  pins, scroll-down until you see E2 , select E2 and hit the *Enter* key to assign the pin.
 
-   **For PYNQ-Z2**: Type **M**  in the field to jump to Mxx  pins, scroll-down until you see M14 , select M14 and hit the *Enter* key to assign the pin.
+   **For PYNQ-Z2**: Type **M**  in the field to jump to Fxx  pins, scroll-down until you see F20 , select F20 and hit the *Enter* key to assign the pin.
 
 4. You can also assign the pin constraints using tcl commands. Type in the following command in the Tcl Console tab to assign the *P2* (Boolean) pin location and the *LVCSMOS33* I/O standard to **SW7** hitting the Enter key after each command. 
 
