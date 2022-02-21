@@ -1,4 +1,4 @@
-Vivado Tutorial Using IP Integrator
+# Vivado Tutorial Using IP Integrator
 
 ## Introduction
 
@@ -339,7 +339,7 @@ I/O Planning layout view of Boolean
 
 I/O Planning layout view of PYNQ-Z2
 
-2. Click under the *I/O Std* column across the **LD7** row and select *LVCOMS33*. This assigns the LVCMOS33 standard to the site.
+2. Click under the *I/O Std* column across the **LD5** row and select *LVCOMS33*. This assigns the LVCMOS33 standard to the site.
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig24.png" alt="fig13" style="zoom:67%;" />
 
@@ -407,8 +407,8 @@ Simulation Sources hierarchy
 module tutorial_tb(
     ); 
     reg [7:0] switches;
-    wire [7:0] leds;
-    reg [7:0] e_led;    
+    wire [5:0] leds;
+    reg [5:0] e_led;    
     integer i;    
     design_1_wrapper tut1(
             .LD0(leds[0]),
@@ -417,8 +417,6 @@ module tutorial_tb(
             .LD3(leds[3]),
             .LD4(leds[4]),
             .LD5(leds[5]),
-            .LD6(leds[6]),
-            .LD7(leds[7]),
             .SW0(switches[0]),
             .SW1(switches[1]),
             .SW2(switches[2]),
@@ -428,14 +426,15 @@ module tutorial_tb(
             .SW6(switches[6]),
             .SW7(switches[7]));
  
-    function [7:0] expected_led;
+    function [5:0] expected_led;
        input [7:0] swt;
     begin      
        expected_led[0] = ~swt[0];
        expected_led[1] = swt[1] & ~swt[2];
-        expected_led[3] = swt[2] & swt[3];
+       expected_led[3] = swt[2] & swt[3];
        expected_led[2] = expected_led[1] | expected_led[3];
-       expected_led[7:4] = swt[7:4];
+       expected_led[4] = (swt[6])?swt[5]:swt[4];
+       expected_led[5] = swt[7];
     end   
     endfunction   
     
@@ -453,6 +452,7 @@ module tutorial_tb(
     end
       
 endmodule
+
 ```
 
 The testbench defines the simulation step size and the resolution in line 1. The testbench module definition begins on line 5. Line 11 instantiates the DUT (device/module under test). Lines 29 through 38 define the same module functionality for the expected value computation. Lines 40 through 51 define the stimuli generation and compares the expected output with what the DUT provides. Line 53 ends the testbench. The $display task will print the message in the simulator console window when the simulation is run.
