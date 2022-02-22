@@ -52,7 +52,7 @@ The design consists of some inputs directly connected to the corresponding outpu
 
 - Verify the functionality in hardware using the target board
 
-###  In the instructions for the labs
+###  In the instructions for the tutorial
 
 The absolute path for the source code should only contain ascii characters. Deep path should also be avoided since the maximum supporting length of path for Windows is 260 characters.
 

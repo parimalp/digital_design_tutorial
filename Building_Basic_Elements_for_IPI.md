@@ -26,7 +26,7 @@ The absolute path for the source code should only contain ascii characters. Deep
 
 **{SOURCES}** refers to *\\digital_design_tutorial\\source\\create_your_own_IPI_block*. You can download the source files for the tutorials from the cloned sources directory
 
-**{tutorialS}** refers to *C:\digital_design_tutorial\\*. It assumes that you will create the mentioned directory structure to carry out the tutorials of this workshop
+**{TUTORIAL}** refers to *C:\digital_design_tutorial\\*. It assumes that you will create the mentioned directory structure to carry out the tutorials of this workshop
 
 ## Step 1 Create a Project for Creating IP in Vivado
 
@@ -36,7 +36,7 @@ The absolute path for the source code should only contain ascii characters. Deep
 
 2. Click the *Create New Project* link.
 
-3. Click **Next**, and name the project **xup_and2** in the **{tutorialS}** directory.
+3. Click **Next**, and name the project **xup_and2** in the **{TUTORIAL}** directory.
 
 4. Click **Next** and make sure that *RTL Project* is selected.
 
@@ -215,15 +215,15 @@ The form will be displayed
 
  9.   Click **OK**.
 
- 10. Using the Windows Explorer, copy the generated xup_and2 and xup_and_vector folders into the xup_lib folder under **{tutorialS}** (create the folder if does not exist).
+ 10. Using the Windows Explorer, copy the generated xup_and2 and xup_and_vector folders into the xup_lib folder under **{TUTORIAL}** (create the folder if does not exist).
 
 ## Step 2 Create a Project for Testing the Created IPs 
 
-### Create an empty Vivado project calling it as xup_and_test in the **{SOURCES}** directory targeting the xc7s50csga324-1 device (for Boolean) or XC7Z020clg400-1 device (for PYNQ-Z2).  Setup the IP Repository to point to {tutorialS}\xup_lib directory. 
+### Create an empty Vivado project calling it as xup_and_test in the **{SOURCES}** directory targeting the xc7s50csga324-1 device (for Boolean) or XC7Z020clg400-1 device (for PYNQ-Z2).  Setup the IP Repository to point to {TUTORIAL}\xup_lib directory. 
 
 1. Click the *Create New Project* link.
 
-2. Set the directory path to **{tutorialS}** and the project name as **xup_and_test**.
+2. Set the directory path to **{TUTORIAL}** and the project name as **xup_and_test**.
 
 3. Click **Next** and make sure that the *RTL Project* type is selected.
 
@@ -237,7 +237,7 @@ The form will be displayed
 
 8. Select **IP** in the left pane of the *Project Settings* form.
 
-9. Click on the **Add Repository…** button, browse to **{tutorialS}\xup_lib** and click **Select**.
+9. Click on the **Add Repository…** button, browse to **{TUTORIAL}\xup_lib** and click **Select**.
 
    The directory will be scanned and IP entries will appear in the **Selected Repository** window.
 
