@@ -199,7 +199,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig13.png" alt="fig13" style="zoom:67%;" />
 
-   <center>Figure 13. Changing/assigning port name</center>
+<center>Figure 13. Changing/assigning port name</center>
 
 3. Similarly, change the output port *y\_0* to **LD0** (as per the diagram in Figure 1)
 
