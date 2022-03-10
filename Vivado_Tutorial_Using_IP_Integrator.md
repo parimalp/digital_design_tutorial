@@ -135,13 +135,13 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig5.png" alt="fig5" style="zoom:67%;" />
 
-   <center>Figure 5. Project Manager Settings</center>
+<center>Figure 5. Project Manager Settings</center>
 
 2. In the *Project Settings* window, click on the **IP > Repository**
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig6.png" alt="fig6" style="zoom:67%;" />
 
-   <center>Figure 6. Project Settings Panel</center>
+<center>Figure 6. Project Settings Panel</center>
 
 3. Click on the ![add](img/Vivado_Tutorial_Using_IP_Integrator/add.png)  button, browse to **{SOURCES}** and select **XUP_LIB** directory, and click **Refresh All > OK**.
 
