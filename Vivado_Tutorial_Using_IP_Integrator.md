@@ -28,7 +28,7 @@ This tutorial is broken into steps that consist of general overview statements p
 
 ### Design Description
 
-The design consists of some inputs directly connected to the corresponding output LEDs. Other inputs are logically operated on before the results are output on the remaining LEDs as shown in **Figure 1**.
+The design consists of one input directly connected to the corresponding output LED. Other inputs are logically operated on before the results are output on the remaining LEDs as shown in **Figure 1**.
 
 ![fig1](img/Vivado_Tutorial_Using_IP_Integrator/fig1.png)
 
@@ -54,13 +54,13 @@ The design consists of some inputs directly connected to the corresponding outpu
 
 ###  In the instructions for the tutorial
 
-The absolute path for the source code should only contain ascii characters. Deep path should also be avoided since the maximum supporting length of path for Windows is 260 characters.
+The absolute path for the source code should only contain ASCII characters. Deep path should also be avoided since the maximum supporting length of path for Windows is 260 characters
 
-**{SOURCES}** refers to *\\Vivado_tutorial_Using_IP_Integrator\\source\\Vivado_tutorial_Using_IP_Integrator*. You can use the source files from the cloned repository's *sources* directory
+**{SOURCES}** refers to *\\sources\\Vivado_tutorial_Using_IP_Integrator\\tutorial*. You can use the source files from the cloned repository's *sources* directory
 
 **{TUTORIAL}** refers to *C:\digital_design_tutorial\\*. It assumes that you will create the mentioned directory structure to carry out the labs of this tutorial
 
-**{BOARD}** refers to target *Boolean* and *Z2* boards.
+**{BOARD}** refers to target *Boolean* and *Z2* boards
 
 ## Step 1 Create a Vivado Project using IDE
 
@@ -78,7 +78,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig2.png" alt="image-20211223145422112" style="zoom:65%;" />
 
-<center>Project Name and Location entry</center>
+<center>Figure 2. Project Name and Location entry</center>
 
 
 5. Select **RTL Project** option in the *Project Type* form and click **Next**.
@@ -99,32 +99,32 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 ![fig3](img/Vivado_Tutorial_Using_IP_Integrator/fig3.png)
 
-<center>Part selection for Boolean </center>
+<center>Figure 3. Part selection for Boolean </center>
 
 
 ![fig3](img/Vivado_Tutorial_Using_IP_Integrator/fig4.png)
 
-<center>Part selection for PYNQ-Z2 </center>
+<center>Figure 4. Part selection for PYNQ-Z2 </center>
 
 11. Click **Finish** to create the Vivado project.
 
     Use the Windows Explorer and look at the **{TUTORIAL}** directory. You will find the file structure as shown below
 
     ```
-    //File structure of created vivado project
+    //File structure of the created Vivado project
 
-    vivado_tutorial
-    │  vivado_tutorial.xpr
+    tutorial
+    │ └─tutorial.xpr
     │
-    ├─vivado_tutorial.cache
+    ├─tutorial.cache
     │  └─wt
-    │          project.wpc
+    │    └─project.wpc
     │
-    ├─vivado_tutorial.hw
-    │      vivado_tutorial.lpr
+    ├─tutorial.hw
+    │  └─tutorial.lpr
     │
-    ├─vivado_tutorial.ip_user_files
-    └─vivado_tutorial.sim
+    ├─tutorial.ip_user_files
+    └─tutorial.sim
     ```
 
     File with extension name `.xpr` is the *(Vivado) Project File*
@@ -133,13 +133,15 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 1. In the *Flow Navigator* window, click on **Settings** under the Project Manager group.
 
-<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig5.png" alt="fig5" style="zoom:67%;" />
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig5.png" alt="fig5" style="zoom:67%;" />
+
+   <center>Figure 5. Project Manager Settings</center>
 
 2. In the *Project Settings* window, click on the **IP > Repository**
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig6.png" alt="fig6" style="zoom:67%;" />
 
-   <center>Project Settings Panel</center>
+   <center>Figure 6. Project Settings Panel</center>
 
 3. Click on the ![add](img/Vivado_Tutorial_Using_IP_Integrator/add.png)  button, browse to **{SOURCES}** and select **XUP_LIB** directory, and click **Refresh All > OK**.
 
@@ -149,29 +151,31 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 <center>Figure 7. Adding IP Repositories</center>
 
+4. Click *Apply* and *OK* to close the form.
+
 ## Step 2 Create a Block Design
 
 ### Create a block design
 
 1. In the *Flow Navigator* window, click on **Create Block Design** under the IP Integrator block
 
-   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig8.png" alt="fig8" style="zoom:67%;" />
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig8.png" alt="fig8" style="zoom:67%;" />
 
-Invoking IP Integrator to create a block diagram
+<center>Figure 8. Invoking IP Integrator to create a block diagram</center>
 
 2. Click **OK** to create a block design named *design_1*
 
 3. IP from the catalog can be added in different ways. Click on *Add IP* button in the top of the *Diagram* panel, or press Ctrl + I, or right-click anywhere in the Diagram workspace and select Add IP
 
-<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig9.png" alt="fig8" style="zoom:67%;" />
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig9.png" alt="fig9" style="zoom:67%;" />
 
- Add IP to Block Diagram
+<center>Figure 9. Add IP to Block Diagram</center>
 
 4. Once the IP Catalog is open, type “inv” into the Search bar, find and double click on **XUP 1-input INV** entry, or click on the entry and hit the Enter key to add it to the design.
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig10.png" alt="fig10" style="zoom:67%;" />
 
-Add an inverter to the design
+<center>Figure 10. Add an inverter to the design</center>
 
 5. Similarly, add another instance of an inverter.
 
@@ -179,9 +183,9 @@ Add an inverter to the design
 
    You can create an instance of already present IP, by clicking on it, pressing Ctrl key, and dragging the instance with the left mouse button.
 
-<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig11.png" alt="fig10" style="zoom:67%;" />
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig11.png" alt="fig11" style="zoom:67%;" />
 
-Added necessary instances
+<center>Figure 11. Added necessary instances</center>
 
 ### Complete the Design
 
@@ -189,13 +193,15 @@ Added necessary instances
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig12.png" alt="fig12" style="zoom:67%;" />
 
-Figure 12. Making Ports External
+<center>Figure 12. Making Ports External</center>
 
-2. Click on the *a* port, and change the name to **SW0** in its properties form.
+2. Click on the *a\_0* port, and change the name to **SW0** in its properties form.
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig13.png" alt="fig13" style="zoom:67%;" />
 
-3. Similarly, change the output port *y* to **LD0** (as per the diagram in Figure 1)
+   </center>Figure 13. Changing/assigning port name</center>
+
+3. Similarly, change the output port *y\_0* to **LD0** (as per the diagram in Figure 1)
 
 4. Arrange OR2 instance such that it is close to the two instances of the AND2.
 
@@ -207,30 +213,30 @@ Figure 12. Making Ports External
 
 7. Similarly, connect the output of the inverter to one input of one of the AND2 instances.
 
-   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig14.png" alt="fig13" style="zoom:67%;" />
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig14.png" alt="fig14" style="zoom:67%;" />
 
-Connecting Instances
+</center>Figure 14. Connecting Instances</center>
 
   This diagram is similar to the logic connected between SW1, SW2, SW3, and LD2.
 
 8. Make input ports of the **xup_inv_1**, *b* port of the **xup_and2_0**, and *a* port of the **xup_and2_1** instances external.
 9. Similarly, make the output port of the **xup_or2_0** instance external.
 
-<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig15.png" alt="fig13" style="zoom:67%;" />
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig15.png" alt="fig15" style="zoom:67%;" />
 
-Making ports external
+</center>Figure 15. Making ports external</center>
 
-10. Change the name of *a_0* to **SW1**, *a_1* to **SW2**, *b* to **SW3**, and *y* to **LD2**.
+10. Change the name of *a_0* to **SW1**, *a_1* to **SW2**, *b\_0* to **SW3**, and *y\_0* to **LD2**.
 
 11. Right-click somewhere on the canvas and select Create Port.
 
     A Create Port form will appear.
 
-12. Enter **LD1** as the port name, using the drop-down button select the type as *output*, and click **OK**
+12. Enter **LD1** as the port name, using the drop-down button select the type as *output*, and click **OK.**
 
-    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig16.png" alt="fig13" style="zoom:67%;" />
+    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig16.png" alt="fig16" style="zoom:67%;" />
 
-Creating an output port
+</center>Figure 16. Creating an output port</center>
 
 13. Similarly, create the output port naming it as **LD3**
 
@@ -240,17 +246,17 @@ Creating an output port
 
     The diagram will look similar to shown below.
 
-    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig17.png" alt="fig13" style="zoom:67%;" />
+    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig17.png" alt="fig17" style="zoom:67%;" />
 
-Partially completed design
+</center>Figure 17. Partially completed design</center>
 
 ### Complete the design including rest of the switches and LDs
 
 1. Right-click on the canvas and create an input port *SW4*.
 
-2. Similarly, create *SW4*, *SW5*, *SW6*, and *SW7* as input ports, and *LD4*, *LD5*, *LD6*, and *LD7* as output ports.
+2. Similarly, create *SW5*, *SW6*, and *SW7* as input ports, and *LD4*, *LD5*, *LD6*, and *LD7* as output ports.
 
-3. Using wiring tool, connect *SW4* to *LD4*, *SW5* to *LD5*, *SW6* to *LD6*, and *SW7* to *LD7*.
+3. **This point onwards steps and diagrams must be validated** Using wiring tool, connect *SW4* to *LD4*, *SW5* to *LD5*, *SW6* to *LD6*, and *SW7* to *LD7*.
 
 4. Click the re-draw button.
 
