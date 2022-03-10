@@ -199,7 +199,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig13.png" alt="fig13" style="zoom:67%;" />
 
-   </center>Figure 13. Changing/assigning port name</center>
+   <center>Figure 13. Changing/assigning port name</center>
 
 3. Similarly, change the output port *y\_0* to **LD0** (as per the diagram in Figure 1)
 
@@ -215,7 +215,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig14.png" alt="fig14" style="zoom:67%;" />
 
-</center>Figure 14. Connecting Instances</center>
+<center>Figure 14. Connecting Instances</center>
 
   This diagram is similar to the logic connected between SW1, SW2, SW3, and LD2.
 
@@ -224,7 +224,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig15.png" alt="fig15" style="zoom:67%;" />
 
-</center>Figure 15. Making ports external</center>
+<center>Figure 15. Making ports external</center>
 
 10. Change the name of *a_0* to **SW1**, *a_1* to **SW2**, *b\_0* to **SW3**, and *y\_0* to **LD2**.
 
@@ -236,7 +236,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
     <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig16.png" alt="fig16" style="zoom:67%;" />
 
-</center>Figure 16. Creating an output port</center>
+<center>Figure 16. Creating an output port</center>
 
 13. Similarly, create the output port naming it as **LD3**
 
@@ -248,7 +248,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
     <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig17.png" alt="fig17" style="zoom:67%;" />
 
-</center>Figure 17. Partially completed design</center>
+<center>Figure 17. Partially completed design</center>
 
 ### Complete the design including rest of the switches and LDs
 
