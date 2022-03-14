@@ -30,7 +30,7 @@ This tutorial is broken into steps that consist of general overview statements p
 
 The design consists of one input directly connected to the corresponding output LED. Other inputs are logically operated on before the results are output on the remaining LEDs as shown in **Figure 1**.
 
-![fig1](img/Vivado_Tutorial_Using_IP_Integrator/fig1.png)
+![fig1](img/Vivado_Tutorial_Using_IP_Integrator/fig1.jpg)
 
 <center>Figure 1. Completed Design</center>
 
@@ -112,7 +112,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
     ```
     //File structure of the created Vivado project
-
+    
     tutorial
     │ └─tutorial.xpr
     │
