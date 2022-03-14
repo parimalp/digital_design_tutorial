@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This tutorial guides you through the design flow using Xilinx Vivado software to create a simple digital circuit using Vivado IP Integrator (IPI). A typical design flow consists of creating a Vivado project, optionally setting a user-defined IP library settings, creating a block design using various IP, creating a HDL wrapper, creating and/or adding user constraint file(s), optionally running behavioral simulation, synthesizing the design, implementing the design, generating the bitstream, and finally verifying the functionality in the hardware by downloading the generated bitstream file.  You will go through the typical design flow targeting the Spartan 7-50 based Boolean Board and Zynq-7020 based PYNQ-Z2. For Z2, we will be using an [RPI add-on board](https://www.tulembedded.com/FPGA/Products_RPI_Logic_Board.html), for adding more I/O resources. This board using the Raspberry Pi extension slot to provide extra accessible buttons and switches.
+This tutorial guides you through the design flow using Xilinx Vivado software to create a simple digital circuit using Vivado IP Integrator (IPI). A typical design flow consists of creating a Vivado project, optionally setting a user-defined IP library settings, creating a block design using various IP, creating a HDL wrapper, creating and/or adding user constraint file(s), optionally running behavioral simulation, synthesizing the design, implementing the design, generating the bitstream, and finally verifying the functionality in the hardware by downloading the generated bitstream file.  You will go through the typical design flow targeting the Spartan 7-50 based Boolean Board and Zynq-7020 based PYNQ-Z2. For Z2, you will be using an [RPI add-on board](https://www.tulembedded.com/FPGA/Products_RPI_Logic_Board.html), for adding more I/O resources. This add-on board plugs into the Raspberry Pi extension slot to provide extra accessible buttons and switches.
 
 ## Objectives
 
@@ -16,19 +16,19 @@ After completing this tutorial, you will be able to:
 
 - Simulate the design using the XSim simulator
 
-- Synthesize and implement the design 
+- Synthesize and implement the design
 
 - Generate the bitstream
 
 - Configure the FPGA using the generated bitstream and verify the functionality
 
-## Procedure 
+## Procedure
 
 This tutorial is broken into steps that consist of general overview statements providing information on the detailed instructions that follow. Follow these detailed instructions to progress through the tutorial.
 
 ### Design Description
 
-The design consists of some inputs directly connected to the corresponding output LEDs. Other inputs are logically operated on before the results are output on the remaining LEDs as shown in **Figure 1**. 
+The design consists of one input directly connected to the corresponding output LED. Other inputs are logically operated on before the results are output on the remaining LEDs as shown in **Figure 1**.
 
 ![fig1](img/Vivado_Tutorial_Using_IP_Integrator/fig1.png)
 
@@ -54,13 +54,13 @@ The design consists of some inputs directly connected to the corresponding outpu
 
 ###  In the instructions for the tutorial
 
-The absolute path for the source code should only contain ascii characters. Deep path should also be avoided since the maximum supporting length of path for Windows is 260 characters.
+The absolute path for the source code should only contain ASCII characters. Deep path should also be avoided since the maximum supporting length of path for Windows is 260 characters
 
-**{SOURCES}** refers to *\\Vivado_tutorial_Using_IP_Integrator\\source\\Vivado_tutorial_Using_IP_Integrator*. You can use the source files from the cloned repository's *sources* directory
+**{SOURCES}** refers to *\\sources\\Vivado_tutorial_Using_IP_Integrator\\tutorial*. You can use the source files from the cloned repository's *sources* directory
 
 **{TUTORIAL}** refers to *C:\digital_design_tutorial\\*. It assumes that you will create the mentioned directory structure to carry out the labs of this tutorial
 
-**{BOARD}** refers to target *Boolean* and *Z2* boards. 
+**{BOARD}** refers to target *Boolean* and *Z2* boards
 
 ## Step 1 Create a Vivado Project using IDE
 
@@ -78,7 +78,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig2.png" alt="image-20211223145422112" style="zoom:65%;" />
 
-<center>Project Name and Location entry</center>
+<center>Figure 2. Project Name and Location entry</center>
 
 
 5. Select **RTL Project** option in the *Project Type* form and click **Next**.
@@ -95,36 +95,36 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 10. In the *Default Part* form, using the **Parts** option and various drop-down fields of the **Filter section**, Select the **XC7Z020clg400-1**(for PYNQ-Z2) or **xc7s50csga324-1** (for Boolean).
 
-    
+
 
 ![fig3](img/Vivado_Tutorial_Using_IP_Integrator/fig3.png)
 
-<center>Part selection for Boolean </center>
+<center>Figure 3. Part selection for Boolean </center>
 
 
 ![fig3](img/Vivado_Tutorial_Using_IP_Integrator/fig4.png)
 
-<center>Part selection for PYNQ-Z2 </center>
+<center>Figure 4. Part selection for PYNQ-Z2 </center>
 
-11. Click **Finish** to create the Vivado project. 
+11. Click **Finish** to create the Vivado project.
 
     Use the Windows Explorer and look at the **{TUTORIAL}** directory. You will find the file structure as shown below
 
     ```
-    //File structure of created vivado project
-    
-    vivado_tutorial
-    │  vivado_tutorial.xpr
+    //File structure of the created Vivado project
+
+    tutorial
+    │ └─tutorial.xpr
     │
-    ├─vivado_tutorial.cache
+    ├─tutorial.cache
     │  └─wt
-    │          project.wpc
+    │    └─project.wpc
     │
-    ├─vivado_tutorial.hw
-    │      vivado_tutorial.lpr
+    ├─tutorial.hw
+    │  └─tutorial.lpr
     │
-    ├─vivado_tutorial.ip_user_files
-    └─vivado_tutorial.sim
+    ├─tutorial.ip_user_files
+    └─tutorial.sim
     ```
 
     File with extension name `.xpr` is the *(Vivado) Project File*
@@ -133,13 +133,15 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 1. In the *Flow Navigator* window, click on **Settings** under the Project Manager group.
 
-<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig5.png" alt="fig5" style="zoom:67%;" />
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig5.png" alt="fig5" style="zoom:67%;" />
+
+<center>Figure 5. Project Manager Settings</center>
 
 2. In the *Project Settings* window, click on the **IP > Repository**
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig6.png" alt="fig6" style="zoom:67%;" />
 
-   <center>Project Settings Panel</center>
+<center>Figure 6. Project Settings Panel</center>
 
 3. Click on the ![add](img/Vivado_Tutorial_Using_IP_Integrator/add.png)  button, browse to **{SOURCES}** and select **XUP_LIB** directory, and click **Refresh All > OK**.
 
@@ -149,29 +151,31 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 <center>Figure 7. Adding IP Repositories</center>
 
+4. Click *Apply* and *OK* to close the form.
+
 ## Step 2 Create a Block Design
 
 ### Create a block design
 
 1. In the *Flow Navigator* window, click on **Create Block Design** under the IP Integrator block
 
-   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig8.png" alt="fig8" style="zoom:67%;" />
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig8.png" alt="fig8" style="zoom:67%;" />
 
-Invoking IP Integrator to create a block diagram
+<center>Figure 8. Invoking IP Integrator to create a block diagram</center>
 
 2. Click **OK** to create a block design named *design_1*
 
 3. IP from the catalog can be added in different ways. Click on *Add IP* button in the top of the *Diagram* panel, or press Ctrl + I, or right-click anywhere in the Diagram workspace and select Add IP
 
-<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig9.png" alt="fig8" style="zoom:67%;" />
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig9.png" alt="fig9" style="zoom:67%;" />
 
- Add IP to Block Diagram
+<center>Figure 9. Add IP to Block Diagram</center>
 
 4. Once the IP Catalog is open, type “inv” into the Search bar, find and double click on **XUP 1-input INV** entry, or click on the entry and hit the Enter key to add it to the design.
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig10.png" alt="fig10" style="zoom:67%;" />
 
-Add an inverter to the design
+<center>Figure 10. Add an inverter to the design</center>
 
 5. Similarly, add another instance of an inverter.
 
@@ -179,9 +183,9 @@ Add an inverter to the design
 
    You can create an instance of already present IP, by clicking on it, pressing Ctrl key, and dragging the instance with the left mouse button.
 
-<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig11.png" alt="fig10" style="zoom:67%;" />
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig11.png" alt="fig11" style="zoom:67%;" />
 
-Added necessary instances
+<center>Figure 11. Added necessary instances</center>
 
 ### Complete the Design
 
@@ -189,48 +193,50 @@ Added necessary instances
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig12.png" alt="fig12" style="zoom:67%;" />
 
-Figure 12. Making Ports External
+<center>Figure 12. Making Ports External</center>
 
-2. Click on the *a* port, and change the name to **SW0** in its properties form.
+2. Click on the *a\_0* port, and change the name to **SW0** in its properties form.
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig13.png" alt="fig13" style="zoom:67%;" />
 
-3. Similarly, change the output port *y* to **LD0** (as per the diagram in Figure 1)
+<center>Figure 13. Changing/assigning port name</center>
 
-4. Arrange OR2 instance such that it is close to the two instances of the AND2. 
+3. Similarly, change the output port *y\_0* to **LD0** (as per the diagram in Figure 1)
+
+4. Arrange OR2 instance such that it is close to the two instances of the AND2.
 
 5. Arrange the second instance of the inverter on the left of one of the AND2 gate
 
 6. Using the left-button of the mouse, draw a connection between the outputs of the AND2 instances and the two input of the OR2.
 
-   When you move the mouse closer to a port, the cursor becomes drawing pencil icon. Click the left-button of the mouse and keeping the button pressed draw it towards the destination port. You make a connection this way. 
+   When you move the mouse closer to a port, the cursor becomes drawing pencil icon. Click the left-button of the mouse and keeping the button pressed draw it towards the destination port. You make a connection this way.
 
 7. Similarly, connect the output of the inverter to one input of one of the AND2 instances.
 
-   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig14.png" alt="fig13" style="zoom:67%;" />
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig14.png" alt="fig14" style="zoom:67%;" />
 
-Connecting Instances
+<center>Figure 14. Connecting Instances</center>
 
   This diagram is similar to the logic connected between SW1, SW2, SW3, and LD2.
 
 8. Make input ports of the **xup_inv_1**, *b* port of the **xup_and2_0**, and *a* port of the **xup_and2_1** instances external.
 9. Similarly, make the output port of the **xup_or2_0** instance external.
 
-<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig15.png" alt="fig13" style="zoom:67%;" />
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig15.png" alt="fig15" style="zoom:67%;" />
 
-Making ports external
+<center>Figure 15. Making ports external</center>
 
-10. Change the name of *a_0* to **SW1**, *a_1* to **SW2**, *b* to **SW3**, and *y* to **LD2**.
+10. Change the name of *a_0* to **SW1**, *a_1* to **SW2**, *b\_0* to **SW3**, and *y\_0* to **LD2**.
 
 11. Right-click somewhere on the canvas and select Create Port.
 
     A Create Port form will appear.
 
-12. Enter **LD1** as the port name, using the drop-down button select the type as *output*, and click **OK**
+12. Enter **LD1** as the port name, using the drop-down button select the type as *output*, and click **OK.**
 
-    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig16.png" alt="fig13" style="zoom:67%;" />
+    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig16.png" alt="fig16" style="zoom:67%;" />
 
-Creating an output port
+<center>Figure 16. Creating an output port</center>
 
 13. Similarly, create the output port naming it as **LD3**
 
@@ -240,17 +246,17 @@ Creating an output port
 
     The diagram will look similar to shown below.
 
-    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig17.png" alt="fig13" style="zoom:67%;" />
+    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig17.png" alt="fig17" style="zoom:67%;" />
 
-Partially completed design
+<center>Figure 17. Partially completed design</center>
 
 ### Complete the design including rest of the switches and LDs
 
 1. Right-click on the canvas and create an input port *SW4*.
 
-2. Similarly, create *SW4*, *SW5*, *SW6*, and *SW7* as input ports, and *LD4*, *LD5*, *LD6*, and *LD7* as output ports.
+2. Similarly, create *SW5*, *SW6*, and *SW7* as input ports, and *LD4*, *LD5*, *LD6*, and *LD7* as output ports.
 
-3. Using wiring tool, connect *SW4* to *LD4*, *SW5* to *LD5*, *SW6* to *LD6*, and *SW7* to *LD7*.
+3. **This point onwards steps and diagrams must be validated** Using wiring tool, connect *SW4* to *LD4*, *SW5* to *LD5*, *SW6* to *LD6*, and *SW7* to *LD7*.
 
 4. Click the re-draw button.
 
@@ -268,7 +274,7 @@ Partially completed design
 
 1. In the *sources* view, Right Click on the block diagram file, **design_1.bd**, and select **Create HDL Wrapper** to create the HDL wrapper file. When prompted, select **Let Vivado manage wrapper and auto-update**, click **OK.**
 
-2. In the *Sources* pane, expand the hierarchy. 
+2. In the *Sources* pane, expand the hierarchy.
 
    Notice the design_1_wrapper file instantiates design_1 which in turn instantiates the inverter twice, and2 twice, and or2 once.
 
@@ -297,9 +303,9 @@ Constraints file added for the Boolean board
 
 6. In the *Sources* pane, expand the *Constraints* folder and double-click the **tutorial_{BOARD}.xdc**(**tutorial_boolean** for Boolean or **tutorial_z2.xdc**(for PYNQ-Z2) entry to open the file in text mode.
 
-7. **In tutorial_{BOARD}.xdc**: Lines 10-16 define the pin locations of the input SW0~6 and lines 21-27 define the pin locations of the output LD0~6. 
+7. **In tutorial_{BOARD}.xdc**: Lines 10-16 define the pin locations of the input SW0~6 and lines 21-27 define the pin locations of the output LD0~6.
 
-   **In tutorial_z2.xdc**: Lines 2-15 define the pin locations of the input SW0~6 and lines 24-37 define the pin locations of the output LD0~6. 
+   **In tutorial_z2.xdc**: Lines 2-15 define the pin locations of the input SW0~6 and lines 24-37 define the pin locations of the output LD0~6.
 
    The SW7 and LD7 are deliberately not defined so you can learn how to enter them using other methods.
 
@@ -345,13 +351,13 @@ I/O Planning layout view of PYNQ-Z2
 
 Assigning I/O standard
 
-3. Similarly, click under the *Site* column across LD5 row to see a drop-down box appear. 
+3. Similarly, click under the *Site* column across LD5 row to see a drop-down box appear.
 
    **For Boolean**: Type **E**  in the field to jump to Exx  pins, scroll-down until you see E2 , select E2 and hit the *Enter* key to assign the pin.
 
    **For PYNQ-Z2**: Type **M**  in the field to jump to Fxx  pins, scroll-down until you see F20 , select F20 and hit the *Enter* key to assign the pin.
 
-4. You can also assign the pin constraints using tcl commands. Type in the following command in the Tcl Console tab to assign the *P2* (Boolean) pin location and the *LVCSMOS33* I/O standard to **SW7** hitting the Enter key after each command. 
+4. You can also assign the pin constraints using tcl commands. Type in the following command in the Tcl Console tab to assign the *P2* (Boolean) pin location and the *LVCSMOS33* I/O standard to **SW7** hitting the Enter key after each command.
 
    **Boolean:**
 
@@ -359,7 +365,7 @@ Assigning I/O standard
    set_property -dict {PACKAGE_PIN P2 IOSTANDARD LVCMOS33} [get_ports {SW7}]
    ```
    **PYNQ-Z2**
-   
+
    ```tcl
    set_property -dict {PACKAGE_PIN W9 IOSTANDARD LVCMOS33} [get_ports {SW7}]
    ```
@@ -405,7 +411,7 @@ Simulation Sources hierarchy
 // Module Name: tutorial_tb
 /////////////////////////////////////////////////////////////////
 module tutorial_tb(
-    ); 
+    );
     reg [7:0] switches;
     wire [5:0] leds;
     reg [5:0] e_led;    
@@ -425,7 +431,7 @@ module tutorial_tb(
             .SW5(switches[5]),
             .SW6(switches[6]),
             .SW7(switches[7]));
- 
+
     function [5:0] expected_led;
        input [7:0] swt;
     begin      
@@ -437,7 +443,7 @@ module tutorial_tb(
        expected_led[5] = swt[7];
     end   
     endfunction   
-    
+
     initial
     begin
         for (i=0; i < 255; i=i+2)
@@ -450,7 +456,7 @@ module tutorial_tb(
                 $display("LED output mis-matched at ",$time,": expected: %b, actual: %b", e_led, leds);
         end
     end
-      
+
 endmodule
 
 ```
@@ -475,7 +481,7 @@ Simulator output
 
    You will see four main views:
 
-(i) *Scopes,* where the testbench hierarchy as well as glbl instances are displayed, 
+(i) *Scopes,* where the testbench hierarchy as well as glbl instances are displayed,
 
 (ii) *Objects,* where top-level signals are displayed,
 
@@ -483,7 +489,7 @@ Simulator output
 
 (iv) *Tcl Console* where the simulation activities are displayed. Notice that since the testbench used is self-checking, the results are displayed as the simulation is run.
 
-Notice that the **tutorial.sim** directory is created under the **tutorial** directory, along with several lower-level directories. 
+Notice that the **tutorial.sim** directory is created under the **tutorial** directory, along with several lower-level directories.
 
 ```
 // Dictionary structure after running behavioral simulation
@@ -580,7 +586,7 @@ Selecting lower-level signals
 
 3. On the simulator tool buttons ribbon bar, type 500 in the time window,  click on the drop-down button of the units field and select ns, and click on the (![image-20211228132903373](img/Vivado_Tutorial_Using_IP_Integrator/image-20211228132903373.png)) button.
 
-   The simulation will run for an additional 500 ns. 
+   The simulation will run for an additional 500 ns.
 
 4. Click on the *Zoom Fit* button and observe the output.
 
@@ -624,7 +630,7 @@ Resource utilization estimation summary for Boolean
 
 Synthesized design's schematic view
 
-Notice that IBUF and OBUF are automatically instantiated (added) to the design as the input and output are buffered. 
+Notice that IBUF and OBUF are automatically instantiated (added) to the design as the input and output are buffered.
 
 6. Click on the **+** sign within the *design_1* block to see the underlying logic.
 7. Click on the **+** sign of each of the lower-level blocks to see their implementation.
@@ -658,7 +664,7 @@ vivado_tutorial.runs
 
 ## Step 6 Implement the Design
 
-### Implement the design with the Vivado Implementation Defaults settings and analyze the Project Summary output. 
+### Implement the design with the Vivado Implementation Defaults settings and analyze the Project Summary output.
 
 1. lick on **Run Implementation** under the *Implementation* tasks of the *Flow Navigator* pane.
 
@@ -666,11 +672,11 @@ vivado_tutorial.runs
 
 2. Select **Open implemented design** and click **OK** as we want to look at the implemented design in a Device view tab.
 
-3. Click **Yes** to close the synthesized design. 
+3. Click **Yes** to close the synthesized design.
 
    The implemented design will be opened.
 
-4. In the *Netlist* pane, select one of the nets (e.g. n_0_design_1_i) and notice that the displayed net. 
+4. In the *Netlist* pane, select one of the nets (e.g. n_0_design_1_i) and notice that the displayed net.
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig36.png" alt="fig13" style="zoom:67%;" />
 
@@ -700,7 +706,7 @@ Viewing implemented design
 
 2. Click on the **Zoom Fit** button to see the waveform window from 0 to 200 ns.
 
-3. Right-click at 50 ns (where the switch input is set to 00000000) and select **Markers > Add Marker**. 
+3. Right-click at 50 ns (where the switch input is set to 00000000) and select **Markers > Add Marker**.
 
 4. Similarly, right-click and add a marker at around 55.000 ns where the **leds** changes.
 
@@ -720,11 +726,11 @@ Notice that we monitored the expected led output at 10 ns after the input is cha
 
 1. Click on the **Generate Bitstream** entry under the *Program and Debug* tasks of the *Flow Navigator* pane.
 
-   The bitstream generation process will be run on the implemented design. When the process is completed a *Bitstream Generation* *Completed* dialog box with three options will be displayed. 
+   The bitstream generation process will be run on the implemented design. When the process is completed a *Bitstream Generation* *Completed* dialog box with three options will be displayed.
 
    This process will have **design_1_wrapper.bit** file generated under **impl_1** directory which was generated under the **tutorial.runs** directory.
 
-2. Make sure that the power supply source is jumper to *USB* and the provided Micro-USB cable is connected between the board and the PC. 
+2. Make sure that the power supply source is jumper to *USB* and the provided Micro-USB cable is connected between the board and the PC.
 
    Note that you do not need to connect the power jack and the board can be powered and configured via USB alone
 
@@ -771,7 +777,7 @@ Programming file for PYNQ-Z2
 
 9. Verify the functionality by flipping switches and observing the output on the LEDs.
 
-10. Close the hardware session by selecting **File > Close Hardware Manager.** 
+10. Close the hardware session by selecting **File > Close Hardware Manager.**
 
 11. Click **OK** to close the session.
 
@@ -781,35 +787,4 @@ Programming file for PYNQ-Z2
 
 ## Conclusion
 
-The Vivado software tool can be used to perform a complete design flow. The project was created using the XUP IP library (IPI blocks and user constraint file). A behavioral simulation was done to verify the model functionality. The model was then synthesized, implemented, and a bitstream was generated. The timing simulation was run on the implemented design using the same testbench. The functionality was verified in hardware using the generated bitstream. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+The Vivado software tool can be used to perform a complete design flow. The project was created using the XUP IP library (IPI blocks and user constraint file). A behavioral simulation was done to verify the model functionality. The model was then synthesized, implemented, and a bitstream was generated. The timing simulation was run on the implemented design using the same testbench. The functionality was verified in hardware using the generated bitstream.
