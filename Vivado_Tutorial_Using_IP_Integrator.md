@@ -215,7 +215,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig14.png" alt="fig14" style="zoom:67%;" />
 
-<center>Figure 14. Connecting Instances</center>
+<center>Connecting Instances</center>
 
   This diagram is similar to the logic connected between SW1, SW2, SW3, and LD2.
 
@@ -224,7 +224,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig15.png" alt="fig15" style="zoom:67%;" />
 
-<center>Figure 15. Making ports external</center>
+<center>Making ports external</center>
 
 10. Change the name of *a_0* to **SW1**, *a_1* to **SW2**, *b\_0* to **SW3**, and *y\_0* to **LD2**.
 
@@ -269,6 +269,8 @@ A half adder consists of one exclusive or (XOR) gate and an AND gate, as shown i
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/half_adder_inter.png" alt="fig13" style="zoom:67%;" />
 
+Internal Schematic of a Half Adder
+
 Using two half adders, we can build a full adder. The truth table of a full adder is
 
 | a    | b    | carry in | sum  | carry out |
@@ -286,13 +288,86 @@ Connecting the carry out of the first half adder to the input of the second adde
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/full_adder_inter.png" alt="fig13" style="zoom:67%;" />
 
+Internal Schematic of a Full Adder
+
 The 2-bit adder will be using two cascaded full adder to perform the logical function
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/ripple_carry_inter.png" alt="fig13" style="zoom:67%;" />
 
+Internal Schematic of a Ripple Carry Adder
+
 Following the instructions below to create a 2-bit carry adder
 
 1. create a half adder schematic using a logic gates as shown below
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/half_adder_inter_bd.png" alt="fig13" style="zoom:67%;" />
+
+Block Design of a Half Adder
+
+2. select all the blocks, nets and ports of this half adder, **Right click** on the schematic, choose **Create Hierarchy** in the menu
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/create_hie.png" alt="fig13" style="zoom:67%;" />
+
+Create the hierarchy
+
+3. change the hierarchy name to `half_adder` in the pop-out window
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/change_hie_name.png" alt="fig13" style="zoom:67%;" />
+
+Change the hierarchy name
+
+and you will get a half adder block like this 
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/half_adder_bd.png" alt="fig13" style="zoom:67%;" />
+
+Top View of a Hierarchical Half Adder
+
+4. Using the generated half adder block, construct a full adder. 
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/full_add_inter_bd.png" alt="fig13" style="zoom:67%;" />
+
+Internal Block Design of a Half Adder
+
+5. Repeat the steps for creating hierarchy for a 1-bit full adder.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/full_add_bd.png" alt="fig13" style="zoom:67%;" />
+
+Top View of a Hierarchical Full Adder
+
+6. use the 1-bit full adder to construct a 2-bit ripple carry adder.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/ripple_carry_bd.png" alt="fig13" style="zoom:67%;" />
+
+Internal Block Design of a Ripple Carry Adder
+
+7. Repeat the steps for creating hierarchy for a 2-bit ripple carry adder and make the ports external.
+
+   <img src="img/Vivado_Tutorial_Using_IP_Integrator/ripple_carry_top_bd.png" alt="fig13" style="zoom:67%;" />
+
+Top View of a Hierarchical Ripple Carry Adder
+
+8. Add another multiplexier for the block design and connect the ports to SW4, SW5, SW6 and LD4
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/mux.png" alt="fig13" style="zoom:67%;" />
+
+Pin Mapping for the Mux
+
+9. Select the multiplexier and the adder to create a new hierarchy called `add_on_block`
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/add_on_block_bd.png" alt="fig13" style="zoom:67%;" />
+
+Top View of the Add-on Block
+
+
+10. Connect the ports of the `add` block with Switches and LEDs
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/partial_top_bd.png" alt="fig13" style="zoom:67%;" />
+
+Partially Completed Design
+
+11. The complete block design has been created.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/top_schema_bd.png" alt="fig13" style="zoom:67%;" />
 
 
 ## Step 3 Create HDL Wrapper and Add a Constraint File
@@ -303,7 +378,7 @@ Following the instructions below to create a 2-bit carry adder
 
 2. In the *Sources* pane, expand the hierarchy.
 
-   Notice the design_1_wrapper file instantiates design_1 which in turn instantiates the inverter twice, and2 twice, and or2 once.
+   
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig19.png" alt="fig13" style="zoom:67%;" />
 
@@ -372,17 +447,17 @@ I/O Planning layout view of Boolean
 
 I/O Planning layout view of PYNQ-Z2
 
-2. Click under the *I/O Std* column across the **LD5** row and select *LVCOMS33*. This assigns the LVCMOS33 standard to the site.
+2. Click under the *I/O Std* column across the **LD7** row and select *LVCOMS33*. This assigns the LVCMOS33 standard to the site.
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig24.png" alt="fig13" style="zoom:67%;" />
 
 Assigning I/O standard
 
-3. Similarly, click under the *Site* column across LD5 row to see a drop-down box appear.
+3. Similarly, click under the *Package Pin* column across LD7 row to see a drop-down box appear.
 
-   **For Boolean**: Type **E**  in the field to jump to Exx  pins, scroll-down until you see E2 , select E2 and hit the *Enter* key to assign the pin.
+   **For Boolean**: Type **E**  in the field to jump to Exx  pins, scroll-down until you see E5 , select E5 and hit the *Enter* key to assign the pin.
 
-   **For PYNQ-Z2**: Type **M**  in the field to jump to Fxx  pins, scroll-down until you see F20 , select F20 and hit the *Enter* key to assign the pin.
+   **For PYNQ-Z2**: Type **M**  in the field to jump to Mxx  pins, scroll-down until you see M14 , select M14 and hit the *Enter* key to assign the pin.
 
 4. You can also assign the pin constraints using tcl commands. Type in the following command in the Tcl Console tab to assign the *P2* (Boolean) pin location and the *LVCSMOS33* I/O standard to **SW7** hitting the Enter key after each command.
 
@@ -438,10 +513,10 @@ Simulation Sources hierarchy
 // Module Name: tutorial_tb
 /////////////////////////////////////////////////////////////////
 module tutorial_tb(
-    );
+    ); 
     reg [7:0] switches;
-    wire [5:0] leds;
-    reg [5:0] e_led;    
+    wire [7:0] leds;
+    reg [7:0] e_led;    
     integer i;    
     design_1_wrapper tut1(
             .LD0(leds[0]),
@@ -450,6 +525,8 @@ module tutorial_tb(
             .LD3(leds[3]),
             .LD4(leds[4]),
             .LD5(leds[5]),
+            .LD6(leds[6]),
+            .LD7(leds[7]),
             .SW0(switches[0]),
             .SW1(switches[1]),
             .SW2(switches[2]),
@@ -458,32 +535,35 @@ module tutorial_tb(
             .SW5(switches[5]),
             .SW6(switches[6]),
             .SW7(switches[7]));
-
-    function [5:0] expected_led;
+ 
+    function [7:0] expected_led;
        input [7:0] swt;
+       integer sum_tmp;
     begin      
        expected_led[0] = ~swt[0];
        expected_led[1] = swt[1] & ~swt[2];
        expected_led[3] = swt[2] & swt[3];
        expected_led[2] = expected_led[1] | expected_led[3];
        expected_led[4] = (swt[6])?swt[5]:swt[4];
-       expected_led[5] = swt[7];
+       sum_tmp = swt[5:4] + swt[7:6] + swt[0];
+       {expected_led[6],expected_led[5]} = sum_tmp[1:0];
+       expected_led[7] = sum_tmp[2];
     end   
     endfunction   
-
+    
     initial
     begin
         for (i=0; i < 255; i=i+2)
         begin
             #50 switches=i;
-            #10 e_led = expected_led(switches);
+            #20 e_led = expected_led(switches);
             if(leds == e_led)
                 $display("LED output matched at", $time);
             else
                 $display("LED output mis-matched at ",$time,": expected: %b, actual: %b", e_led, leds);
         end
     end
-
+      
 endmodule
 
 ```
@@ -521,64 +601,85 @@ Notice that the **tutorial.sim** directory is created under the **tutorial** dir
 ```
 // Dictionary structure after running behavioral simulation
 vivado_tutorial.sim
-└─sim_1
-    └─behav
-        └─xsim
-            │  compile.bat
-            │  compile.log
-            │  elaborate.bat
-            │  elaborate.log
-            │  glbl.v
-            │  simulate.bat
-            │  simulate.log
-            │  tutorial_tb.tcl
-            │  tutorial_tb_behav.wdb
-            │  tutorial_tb_vlog.prj
-            │  xelab.pb
-            │  xsim.ini
-            │  xsim.ini.bak
-            │  xvlog.log
-            │  xvlog.pb
+C:.
+└───sim_1
+    └───behav
+        └───xsim
+            │   compile.bat
+            │   elaborate.bat
+            │   elaborate.log
+            │   glbl.v
+            │   simulate.bat
+            │   simulate.log
+            │   tutorial_tb.tcl
+            │   tutorial_tb_behav.wdb
+            │   tutorial_tb_vlog.prj
+            │   xelab.pb
+            │   xsim.ini
+            │   xsim.ini.bak
+            │   xvlog.log
+            │   xvlog.pb
             │
-            ├─protoinst_files
-            │      design_1.protoinst
+            ├───protoinst_files
+            │       design_1.protoinst
             │
-            └─xsim.dir
-                ├─tutorial_tb_behav
-                │  │  Compile_Options.txt
-                │  │  TempBreakPointFile.txt
-                │  │  xsim.dbg
-                │  │  xsim.mem
-                │  │  xsim.reloc
-                │  │  xsim.rlx
-                │  │  xsim.rtti
-                │  │  xsim.svtype
-                │  │  xsim.type
-                │  │  xsim.xdbg
-                │  │  xsimcrash.log
-                │  │  xsimk.exe
-                │  │  xsimkernel.log
-                │  │  xsimSettings.ini
-                │  │
-                │  └─obj
-                │          xsim_0.win64.obj
-                │          xsim_1.c
-                │          xsim_1.win64.obj
+            └───xsim.dir
+                ├───tutorial_tb_behav
+                │   │   Compile_Options.txt
+                │   │   TempBreakPointFile.txt
+                │   │   xsim.dbg
+                │   │   xsim.mem
+                │   │   xsim.reloc
+                │   │   xsim.rlx
+                │   │   xsim.rtti
+                │   │   xsim.svtype
+                │   │   xsim.type
+                │   │   xsim.xdbg
+                │   │   xsimcrash.log
+                │   │   xsimk.exe
+                │   │   xsimkernel.log
+                │   │   xsimSettings.ini
+                │   │
+                │   └───obj
+                │           xsim_0.win64.obj
+                │           xsim_1.c
+                │           xsim_1.win64.obj
                 │
-                └─xil_defaultlib
+                └───xil_defaultlib
+                        add_imp_1@l@c@r@v@x@n.sdb
+                        add_on_block_imp_9@q@b@n@a@z.sdb
                         design_1.sdb
                         design_1_wrapper.sdb
+                        design_1_xup_2_to_1_mux_0_1.sdb
                         design_1_xup_and2_0_0.sdb
-                        design_1_xup_and2_0_1.sdb
+                        design_1_xup_and2_1_0.sdb
+                        design_1_xup_and2_2_1.sdb
+                        design_1_xup_and2_2_2.sdb
+                        design_1_xup_and2_2_3.sdb
+                        design_1_xup_and2_2_4.sdb
                         design_1_xup_inv_0_0.sdb
-                        design_1_xup_inv_0_1.sdb
-                        design_1_xup_or2_0_1.sdb
+                        design_1_xup_inv_1_0.sdb
+                        design_1_xup_or2_0_0.sdb
+                        design_1_xup_or2_1_0.sdb
+                        design_1_xup_or2_1_1.sdb
+                        design_1_xup_xor2_0_1.sdb
+                        design_1_xup_xor2_0_2.sdb
+                        design_1_xup_xor2_0_3.sdb
+                        design_1_xup_xor2_0_4.sdb
+                        full_adder1_imp_@b2@q@t@u@x.sdb
+                        full_adder_imp_9@a@g@o78.sdb
                         glbl.sdb
+                        half_adder1_imp_@e9@a@x33.sdb
+                        half_adder1_imp_@n6@k@c@p@d.sdb
+                        half_adder2_imp_316@q@t6.sdb
+                        half_adder2_imp_@t@e@v@f@r@o.sdb
                         tutorial_tb.sdb
                         xil_defaultlib.rlx
                         xup_and2.sdb
                         xup_inv.sdb
+                        xup_mux_2_to_1.sdb
                         xup_or2.sdb
+                        xup_xor2.sdb
 ```
 
 4. Click on the *Zoom Fit* button (![image-20211228120655503](img/Vivado_Tutorial_Using_IP_Integrator/image-20211228120655503.png)) located left of the waveform window to see the entire waveform.
