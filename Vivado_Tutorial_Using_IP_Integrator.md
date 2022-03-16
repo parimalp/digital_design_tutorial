@@ -28,11 +28,11 @@ This tutorial is broken into steps that consist of general overview statements p
 
 ### Design Description
 
-The design consists of one input directly connected to the corresponding output LED. Other inputs are logically operated on before the results are output on the remaining LEDs as shown in **Figure 1**.
+The design consists of  several inputs who are logically operated on before the results are output on the remaining LEDs and others are contained in a hierarchical block(the `add_on_block` in the diagram) as shown in the following figure.
 
-![fig1](img/Vivado_Tutorial_Using_IP_Integrator/fig1.jpg)
+![fig1](./img/Vivado_Tutorial_Using_IP_Integrator/top_schema.png)
 
-<center>Figure 1. Completed Design</center>
+Completed Design
 
 ## General Flow for this tutorial
 
@@ -78,7 +78,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig2.png" alt="image-20211223145422112" style="zoom:65%;" />
 
-<center>Figure 2. Project Name and Location entry</center>
+<center> Project Name and Location entry</center>
 
 
 5. Select **RTL Project** option in the *Project Type* form and click **Next**.
@@ -99,12 +99,12 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 ![fig3](img/Vivado_Tutorial_Using_IP_Integrator/fig3.png)
 
-<center>Figure 3. Part selection for Boolean </center>
+<center>Part selection for Boolean </center>
 
 
 ![fig3](img/Vivado_Tutorial_Using_IP_Integrator/fig4.png)
 
-<center>Figure 4. Part selection for PYNQ-Z2 </center>
+<center>Part selection for PYNQ-Z2 </center>
 
 11. Click **Finish** to create the Vivado project.
 
@@ -127,7 +127,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
     └─tutorial.sim
     ```
 
-    File with extension name `.xpr` is the *(Vivado) Project File*
+​        File with extension name `.xpr` is the *(Vivado) Project File*
 
 ### Set IP repository path to point to the provided XUP IP library
 
@@ -135,13 +135,13 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig5.png" alt="fig5" style="zoom:67%;" />
 
-<center>Figure 5. Project Manager Settings</center>
+<center>Project Manager Settings</center>
 
 2. In the *Project Settings* window, click on the **IP > Repository**
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig6.png" alt="fig6" style="zoom:67%;" />
 
-<center>Figure 6. Project Settings Panel</center>
+<center>Project Settings Panel</center>
 
 3. Click on the ![add](img/Vivado_Tutorial_Using_IP_Integrator/add.png)  button, browse to **{SOURCES}** and select **XUP_LIB** directory, and click **Refresh All > OK**.
 
@@ -250,23 +250,50 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 <center>Figure 17. Partially completed design</center>
 
-### Complete the design including rest of the switches and LDs
+### Complete the design including rest of the switches and LDs with a hierarchical block
 
-1. Right-click on the canvas and create an input port *SW4*.
+To create a 2-bit adder with the basic logic gates, we need to implement a half adder first. The truth table of a half adder is 
 
-2. Similarly, create *SW5*, *SW6*, and *SW7* as input ports, and *LD4*, *LD5*, *LD6*, and *LD7* as output ports.
+| a    | b    | sum  | carry out |
+| ---- | ---- | ---- | --------- |
+| 0    | 0    | 0    | 0         |
+| 0    | 1    | 1    | 0         |
+| 1    | 0    | 1    | 0         |
+| 1    | 1    | 0    | 1         |
 
-3. **This point onwards steps and diagrams must be validated** Using wiring tool, connect *SW4* to *LD4*, *SW5* to *LD5*, *SW6* to *LD6*, and *SW7* to *LD7*.
+derive the logical expression from the truth table above, we got
+$$
+sum = a\oplus b\\carry = a\cdot b
+$$
+A half adder consists of one exclusive or (XOR) gate and an AND gate, as shown in the following figure
 
-4. Click the re-draw button.
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/half_adder_inter.png" alt="fig13" style="zoom:67%;" />
 
-   The design should look like as shown below.
+Using two half adders, we can build a full adder. The truth table of a full adder is
 
-   <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig18.png" alt="fig13" style="zoom:67%;" />
+| a    | b    | carry in | sum  | carry out |
+| ---- | ---- | -------- | ---- | --------- |
+| 0    | 0    | 0        | 0    | 0         |
+| 0    | 0    | 1        | 1    | 0         |
+| 0    | 1    | 0        | 1    | 0         |
+| 0    | 1    | 1        | 0    | 1         |
+| 1    | 0    | 0        | 1    | 0         |
+| 1    | 0    | 1        | 0    | 1         |
+| 1    | 1    | 0        | 0    | 1         |
+| 1    | 1    | 1        | 1    | 1         |
 
-   The completed design
+Connecting the carry out of the first half adder to the input of the second adder, we can construct a full adder
 
-5. Select **File > Save Block Design.**
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/full_adder_inter.png" alt="fig13" style="zoom:67%;" />
+
+The 2-bit adder will be using two cascaded full adder to perform the logical function
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/ripple_carry_inter.png" alt="fig13" style="zoom:67%;" />
+
+Following the instructions below to create a 2-bit carry adder
+
+1. create a half adder schematic using a logic gates as shown below
+
 
 ## Step 3 Create HDL Wrapper and Add a Constraint File
 
