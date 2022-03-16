@@ -775,19 +775,42 @@ Using the Windows Explorer, verify that **tutorial.runs** directory is created u
 // Dictionary structure after synthesis the design
 
 vivado_tutorial.runs
-├─.jobs
-├─design_1_xup_and2_0_0_synth_1
-│  └─.Xil
-├─design_1_xup_and2_0_1_synth_1
-│  └─.Xil
-├─design_1_xup_inv_0_0_synth_1
-│  └─.Xil
-├─design_1_xup_inv_0_1_synth_1
-│  └─.Xil
-├─design_1_xup_or2_0_1_synth_1
-│  └─.Xil
-└─synth_1
-    └─.Xil
+├───.jobs
+├───design_1_xup_2_to_1_mux_0_1_synth_1
+│   └───.Xil
+├───design_1_xup_and2_0_0_synth_1
+│   └───.Xil
+├───design_1_xup_and2_1_0_synth_1
+│   └───.Xil
+├───design_1_xup_and2_2_1_synth_1
+│   └───.Xil
+├───design_1_xup_and2_2_2_synth_1
+│   └───.Xil
+├───design_1_xup_and2_2_3_synth_1
+│   └───.Xil
+├───design_1_xup_and2_2_4_synth_1
+│   └───.Xil
+├───design_1_xup_inv_0_0_synth_1
+│   └───.Xil
+├───design_1_xup_inv_1_0_synth_1
+│   └───.Xil
+├───design_1_xup_or2_0_0_synth_1
+│   └───.Xil
+├───design_1_xup_or2_1_0_synth_1
+│   └───.Xil
+├───design_1_xup_or2_1_1_synth_1
+│   └───.Xil
+├───design_1_xup_xor2_0_1_synth_1
+│   └───.Xil
+├───design_1_xup_xor2_0_2_synth_1
+│   └───.Xil
+├───design_1_xup_xor2_0_3_synth_1
+│   └───.Xil
+├───design_1_xup_xor2_0_4_synth_1
+│   └───.Xil
+├───impl_1
+└───synth_1
+    └───.Xil
 ```
 
 ## Step 6 Implement the Design
