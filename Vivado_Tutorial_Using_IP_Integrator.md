@@ -112,7 +112,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
     ```
     //File structure of the created Vivado project
-    
+
     tutorial
     │ └─tutorial.xpr
     │
@@ -149,7 +149,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig7.png" alt="fig7" style="zoom:67%;" />
 
-<center>Figure 7. Adding IP Repositories</center>
+<center>Adding IP Repositories</center>
 
 4. Click *Apply* and *OK* to close the form.
 
@@ -161,7 +161,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig8.png" alt="fig8" style="zoom:67%;" />
 
-<center>Figure 8. Invoking IP Integrator to create a block diagram</center>
+<center>Invoking IP Integrator to create a block diagram</center>
 
 2. Click **OK** to create a block design named *design_1*
 
@@ -169,13 +169,13 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig9.png" alt="fig9" style="zoom:67%;" />
 
-<center>Figure 9. Add IP to Block Diagram</center>
+<center>Add IP to Block Diagram</center>
 
 4. Once the IP Catalog is open, type “inv” into the Search bar, find and double click on **XUP 1-input INV** entry, or click on the entry and hit the Enter key to add it to the design.
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig10.png" alt="fig10" style="zoom:67%;" />
 
-<center>Figure 10. Add an inverter to the design</center>
+<center>Add an inverter to the design</center>
 
 5. Similarly, add another instance of an inverter.
 
@@ -185,7 +185,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig11.png" alt="fig11" style="zoom:67%;" />
 
-<center>Figure 11. Added necessary instances</center>
+<center>Added necessary instances</center>
 
 ### Complete the Design
 
@@ -193,25 +193,25 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig12.png" alt="fig12" style="zoom:67%;" />
 
-<center>Figure 12. Making Ports External</center>
+<center>Making Ports External</center>
 
 2. Click on the *a\_0* port, and change the name to **SW0** in its properties form.
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig13.png" alt="fig13" style="zoom:67%;" />
 
-<center>Figure 13. Changing/assigning port name</center>
+<center>Changing/assigning port name</center>
 
 3. Similarly, change the output port *y\_0* to **LD0** (as per the diagram in Figure 1)
 
-4. Arrange OR2 instance such that it is close to the two instances of the AND2.
+4. Arrange OR2 instance such that it is close and right to the two instances of the AND2 as seen in the diagram below.
 
-5. Arrange the second instance of the inverter on the left of one of the AND2 gate
+5. Arrange the second instance of the inverter on the left of the two instances of the AND2 gates.
 
 6. Using the left-button of the mouse, draw a connection between the outputs of the AND2 instances and the two input of the OR2.
 
    When you move the mouse closer to a port, the cursor becomes drawing pencil icon. Click the left-button of the mouse and keeping the button pressed draw it towards the destination port. You make a connection this way.
 
-7. Similarly, connect the output of the inverter to one input of one of the AND2 instances.
+7. Similarly, connect the output of the inverter to the **b** input of the `xup_and2_0` instance.
 
    <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig14.png" alt="fig14" style="zoom:67%;" />
 
@@ -219,7 +219,7 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
   This diagram is similar to the logic connected between SW1, SW2, SW3, and LD2.
 
-8. Make input ports of the **xup_inv_1**, *b* port of the **xup_and2_0**, and *a* port of the **xup_and2_1** instances external.
+8. Make input ports of the **xup_inv_1**, *b* port of the **xup_and2_1**, and *a* port of the **xup_and2_0** instances external.
 9. Similarly, make the output port of the **xup_or2_0** instance external.
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig15.png" alt="fig15" style="zoom:67%;" />
@@ -236,23 +236,23 @@ Launch Vivado and create a project targeting the **{BOARD}** and using the Veril
 
     <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig16.png" alt="fig16" style="zoom:67%;" />
 
-<center>Figure 16. Creating an output port</center>
+<center>reating an output port</center>
 
-13. Similarly, create the output port naming it as **LD3**
+13. Similarly, create the output port naming it as **LD3**.
 
 14. Connect the input port *a* of the **xup_and2_1** instance to output port of the instance **xup_inv_1**.
 
-15. Connect the output port of the **xup_and2_1** to **LD1** and **xup_and2_0** to **LD3**. Click on the re-draw button.
+15. Connect the output port of the **xup_and2_0** to **LD1** and **xup_and2_1** to **LD3**. Click on the re-draw button.
 
     The diagram will look similar to shown below.
 
     <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig17.png" alt="fig17" style="zoom:67%;" />
 
-<center>Figure 17. Partially completed design</center>
+<center>Partially completed design</center>
 
 ### Complete the design including rest of the switches and LDs with a hierarchical block
 
-To create a 2-bit adder with the basic logic gates, we need to implement a half adder first. The truth table of a half adder is 
+To create a 2-bit adder with the basic logic gates, we need to implement a half adder first. The truth table of a half adder is
 
 | a    | b    | sum  | carry out |
 | ---- | ---- | ---- | --------- |
@@ -262,9 +262,10 @@ To create a 2-bit adder with the basic logic gates, we need to implement a half 
 | 1    | 1    | 0    | 1         |
 
 derive the logical expression from the truth table above, we got
-$$
-sum = a\oplus b\\carry = a\cdot b
-$$
+
+sum = a xor b
+carry_out = a and b
+
 A half adder consists of one exclusive or (XOR) gate and an AND gate, as shown in the following figure
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/half_adder_inter.png" alt="fig13" style="zoom:67%;" />
@@ -296,7 +297,7 @@ The 2-bit adder will be using two cascaded full adder to perform the logical fun
 
 Internal Schematic of a Ripple Carry Adder
 
-Following the instructions below to create a 2-bit carry adder
+Follow the instructions below to create a 2-bit carry adder
 
 1. create a half adder schematic using a logic gates as shown below
 
@@ -304,29 +305,29 @@ Following the instructions below to create a 2-bit carry adder
 
 Block Design of a Half Adder
 
-2. select all the blocks, nets and ports of this half adder, **Right click** on the schematic, choose **Create Hierarchy** in the menu
+2. select all the blocks, nets and ports of this half adder, **Right click** on the schematic, choose **Create Hierarchy** in the menu.
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/create_hie.png" alt="fig13" style="zoom:67%;" />
 
 Create the hierarchy
 
-3. change the hierarchy name to `half_adder` in the pop-out window
+3. Change the hierarchy name to `half_adder1` in the pop-out window
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/change_hie_name.png" alt="fig13" style="zoom:67%;" />
 
 Change the hierarchy name
 
-and you will get a half adder block like this 
+and you will get a half adder block like this
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/half_adder_bd.png" alt="fig13" style="zoom:67%;" />
 
 Top View of a Hierarchical Half Adder
 
-4. Using the generated half adder block, construct a full adder. 
+4. Using the generated half adder block, construct a full adder. Change hierarchical half adder blocks appropriately as shown.
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/full_add_inter_bd.png" alt="fig13" style="zoom:67%;" />
 
-Internal Block Design of a Half Adder
+Internal Block Design of a Full Adder
 
 5. Repeat the steps for creating hierarchy for a 1-bit full adder.
 
@@ -334,7 +335,7 @@ Internal Block Design of a Half Adder
 
 Top View of a Hierarchical Full Adder
 
-6. use the 1-bit full adder to construct a 2-bit ripple carry adder.
+6. Use the 1-bit full adder to construct a 2-bit ripple carry adder as shown in the diagram below.
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/ripple_carry_bd.png" alt="fig13" style="zoom:67%;" />
 
@@ -346,20 +347,20 @@ Internal Block Design of a Ripple Carry Adder
 
 Top View of a Hierarchical Ripple Carry Adder
 
-8. Add another multiplexier for the block design and connect the ports to SW4, SW5, SW6 and LD4
+8. Add another multiplexor for the block design and connect the ports to SW4, SW5, SW6 and LD4.
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/mux.png" alt="fig13" style="zoom:67%;" />
 
 Pin Mapping for the Mux
 
-9. Select the multiplexier and the adder to create a new hierarchy called `add_on_block`
+9. Select the multiplexor and the adder to create a new hierarchy called `add_on_block`.
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/add_on_block_bd.png" alt="fig13" style="zoom:67%;" />
 
 Top View of the Add-on Block
 
 
-10. Connect the ports of the `add` block with Switches and LEDs
+10. Connect the ports of the `add_on_block` block with Switches and LEDs.
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/partial_top_bd.png" alt="fig13" style="zoom:67%;" />
 
@@ -378,7 +379,7 @@ Partially Completed Design
 
 2. In the *Sources* pane, expand the hierarchy.
 
-   
+
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig19.png" alt="fig13" style="zoom:67%;" />
 
@@ -387,7 +388,7 @@ Hierarchical design
 3. Double-click the **design_1_wrapper.v** entry to open the file in text mode and observe the instantiation of the *design_1* module.
 4. Double-click the **design_1.v** entry to open the file in text mode and observe the instantiation of the lower-level modules.
 
-### Add tutorial_{BOARD}.xdc constraints source and analyze the content.
+### Add tutorial_{BOARD}.xdc constraints source file and analyze the content
 
 1. Click on the **Add Sources** under the *Project Manager* group in the *Flow Navigator* window.
 
@@ -395,7 +396,7 @@ Hierarchical design
 
 3. Click **Add Files…** and browse to **{SOURCES}\tutorial**
 
-4. Select **tutorial_{BOARD}.xdc** (for Boolean Board) and click **OK**.
+4. Select **tutorial_{BOARD}.xdc** and click **OK**.
 
 5. Click **Finish** to close the window and add the constraints file in the project under the Constraints group.
 
@@ -403,15 +404,15 @@ Hierarchical design
 
 Constraints file added for the Boolean board
 
-6. In the *Sources* pane, expand the *Constraints* folder and double-click the **tutorial_{BOARD}.xdc**(**tutorial_boolean** for Boolean or **tutorial_z2.xdc**(for PYNQ-Z2) entry to open the file in text mode.
+6. In the *Sources* pane, expand the *Constraints* folder and double-click the **tutorial_{BOARD}.xdc**, **tutorial_boolean** for Boolean or **tutorial_z2.xdc**(for PYNQ-Z2) entry to open the file in text mode.
 
-7. **In tutorial_{BOARD}.xdc**: Lines 10-16 define the pin locations of the input SW0~6 and lines 21-27 define the pin locations of the output LD0~6.
+7. **In tutorial_{BOARD}.xdc**: Lines 10-16 define the pin locations of the input SW0-SW6 and lines 21-27 define the pin locations of the output LD0-LD6.
 
-   **In tutorial_z2.xdc**: Lines 2-15 define the pin locations of the input SW0~6 and lines 24-37 define the pin locations of the output LD0~6.
+   **In tutorial_z2.xdc**: Lines 2-15 define the pin locations of the input SW0-SW6 and lines 24-37 define the pin locations of the output LD0-LD6.
 
-   The SW7 and LD7 are deliberately not defined so you can learn how to enter them using other methods.
+   The SW7 and LD7 are deliberately left out so you can learn how to enter them using other methods.
 
-### Perform RTL analysis on the source file.
+### Perform RTL analysis on the source file
 
 1. Expand the *Open Elaborated Design* entry under the *RTL Analysis* tasks of the *Flow Navigator* pane and click on **Schematic**.
 
@@ -419,13 +420,12 @@ Constraints file added for the Boolean board
 
    The model (design) will be elaborated and a logic view of the design is displayed.
 
-3. Click on the **+** sign inside the block to see its content. Use the *Zoom Full(![image-20211227164120619](img/Vivado_Tutorial_Using_IP_Integrator/image-20211227164120619.png))* button.
+3. Click on the **+** sign inside the block to see its content. Use the *Zoom Full(![image-20211227164120619](img/Vivado_Tutorial_Using_IP_Integrator/image-20211227164120619.png))* button to see the entire design.
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig21.png" alt="fig13" style="zoom:67%;" />
 
 A logic View of the design
 
-  Notice that some of the switch inputs go through gates before being output to LEDs and the rest go straight through to LEDs as modeled in the file.
 
 ### Add I/O constraints for the missing LED and switch pins
 
@@ -439,11 +439,11 @@ A logic View of the design
 
    Move the mouse cursor over the Package view, highlighting different pins. Notice the pin site number is shown at the bottom of the Vivado GUI, along with the pin type (User IO, GND, VCCO…) and the I/O bank it belongs to.
 
-<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig23.png" alt="fig13" style="zoom:67%;" />
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig23.png" alt="fig23" style="zoom:67%;" />
 
 I/O Planning layout view of Boolean
 
-![image-20220119121904320](img/Vivado_Tutorial_Using_IP_Integrator/Z2_IOplanning.png)
+![image-20220119121904320](img/Vivado_Tutorial_Using_IP_Integrator/z2_IOplanning.png)
 
 I/O Planning layout view of PYNQ-Z2
 
@@ -478,11 +478,13 @@ Assigning I/O standard
 
 Assigning I/O standard through the I/O Port Properties form
 
-5. Select **File > Constraints > Save ** and click **OK** to save the constraints in the **tutorial_boolean.xdc** or **tutorial_z2.xdc** file.
+5. Select **File > Constraints > Save** and click **OK** to save the constraints in the **tutorial_boolean.xdc** or **tutorial_z2.xdc** file.
 
-   ## Step 4 Simulate the Design using the XSim Simulator
+6. Close the eleborated design by selecting **File > Close Elaborated Design** .
 
-   ### Add the tutorial_tb.v testbench file
+## Step 4 Simulate the Design using the XSim Simulator
+
+### Add the tutorial_tb.v testbench file
 
 1. Click **Add Sources** under the *Project Manager* tasks of the *Flow Navigator* pane.
 
@@ -513,7 +515,7 @@ Simulation Sources hierarchy
 // Module Name: tutorial_tb
 /////////////////////////////////////////////////////////////////
 module tutorial_tb(
-    ); 
+    );
     reg [7:0] switches;
     wire [7:0] leds;
     reg [7:0] e_led;    
@@ -535,7 +537,7 @@ module tutorial_tb(
             .SW5(switches[5]),
             .SW6(switches[6]),
             .SW7(switches[7]));
- 
+
     function [7:0] expected_led;
        input [7:0] swt;
        integer sum_tmp;
@@ -550,7 +552,7 @@ module tutorial_tb(
        expected_led[7] = sum_tmp[2];
     end   
     endfunction   
-    
+
     initial
     begin
         for (i=0; i < 255; i=i+2)
@@ -563,7 +565,7 @@ module tutorial_tb(
                 $display("LED output mis-matched at ",$time,": expected: %b, actual: %b", e_led, leds);
         end
     end
-      
+
 endmodule
 
 ```
@@ -572,7 +574,7 @@ The testbench defines the simulation step size and the resolution in line 1. The
 
 ### Simulate the design for 1000 ns using the XSim Simulator
 
-1. Select **Simulation Settings** under the *Project Manager* tasks of the *Flow Navigator* pane.
+1. Select **Simulation Settings** by right-clicking on the **SIMULATION** under the *Project Manager* tasks of the *Flow Navigator* pane.
 
    A **Project Settings** form will appear showing the **Simulation** properties form.
 
@@ -582,7 +584,7 @@ The testbench defines the simulation step size and the resolution in line 1. The
 
    The testbench and source files will be compiled and the XSim simulator will be run (assuming no errors). You will see a simulator output similar to the one shown below.
 
-<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig27.png" alt="fig13" style="zoom:67%;" />
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig27.png" alt="fig27" style="zoom:67%;" />
 
 Simulator output
 
@@ -692,7 +694,7 @@ C:.
 
 Float Button
 
-<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig28.png" alt="fig13" style="zoom:67%;" />
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig29.png" alt="fig13" style="zoom:67%;" />
 
 Dock Window Button
 
@@ -700,7 +702,7 @@ Dock Window Button
 
 1. Select **i[31:0]** in the waveform window, right-click, select *Radix*, and then select *Unsigned Decimal* to view the for-loop index in *integer* form. Similarly, change the radix of **switches[7:0]** to *Hexadecimal*. Leave the **leds[7:0]** and **e_led[7:0]** radix to *binary* as we want to see each output bit.
 
-### Add more signals to monitor lower-level signals and continue to run the simulation for 500 ns.
+### Add more signals to monitor lower-level signals and continue to run the simulation for 500 ns
 
 1. Expand the **tutorial_tb** instance, if necessary, in the *Scopes* window and select the **tut1** instance.
 
@@ -712,7 +714,7 @@ Selecting lower-level signals
 
 2. Select **SW\*** and **LD\*** and drag them into the waveform window to monitor those lower-level signals.
 
-3. On the simulator tool buttons ribbon bar, type 500 in the time window,  click on the drop-down button of the units field and select ns, and click on the (![image-20211228132903373](img/Vivado_Tutorial_Using_IP_Integrator/image-20211228132903373.png)) button.
+3. On the simulator tool buttons ribbon bar, type **500** and make sure the time unit is **ns** in the time window,  click on the drop-down button of the units field and select ns, and click on the (![image-20211228132903373](img/Vivado_Tutorial_Using_IP_Integrator/image-20211228132903373.png)) button.
 
    The simulation will run for an additional 500 ns.
 
@@ -722,11 +724,11 @@ Selecting lower-level signals
 
 Running simulation for additional 500 ns
 
-5. Close the simulator by closing the *SIMULATION* window
+5. Close the simulator by selecting **File > Close Simulaton** and discaring changes.
 
 ## Step 5 Synthesize the Design
 
-### Synthesize the design with the Vivado synthesis tool and analyze the Project Summary output.  
+### Synthesize the design with the Vivado synthesis tool and analyze the Project Summary output  
 
 1. Click on **Run Synthesis** under the *Synthesis* tasks of the *Flow Navigator* pane.
 
@@ -740,7 +742,7 @@ Running simulation for additional 500 ns
 
 <img src="img/Vivado_Tutorial_Using_IP_Integrator/fig32.png" alt="fig13" style="zoom:67%;" />
 
-Project Summary view(Taking Boolean as an example)
+Project Summary view(Taking Pynq-Z2 as an example)
 
 Click on the various links to see what information they provide and which allows you to change the synthesis settings.
 
@@ -815,9 +817,9 @@ vivado_tutorial.runs
 
 ## Step 6 Implement the Design
 
-### Implement the design with the Vivado Implementation Defaults settings and analyze the Project Summary output.
+### Implement the design with the Vivado Implementation Defaults settings and analyze the Project Summary output
 
-1. lick on **Run Implementation** under the *Implementation* tasks of the *Flow Navigator* pane.
+1. Click on **Run Implementation** under the *Implementation* tasks of the *Flow Navigator* pane.
 
    The implementation process will be run on the synthesis output files. When the process is completed an *Implementation Completed* dialog box with three options will be displayed.
 
@@ -839,7 +841,7 @@ Viewing implemented design
 
 5. Close the implemented design view and select the **Project Summary** tab (you may have to change to the Default Layout view) and observe the results.
 
-   Notice that the actual resource utilization is three LUTs and 16 IOs. Also, it indicates that no timing constraints were defined for this design (since the design is combinatorial). Select the **Post-implementation** tabs under the *Timing* and *Utilization* windows.
+   Notice that the actual resource utilization is 15 LUTs and 16 IOs. Also, it indicates that no timing constraints were defined for this design (since the design is combinatorial). Select the **Post-implementation** tabs under the *Timing* and *Utilization* windows.
 
 6. Using the Windows Explorer, verify that **impl_1** directory is created at the same level as **synth_1** under the **tutorial.runs** directory. The **impl_1** directory contains several files including the report files.
 
@@ -857,9 +859,9 @@ Viewing implemented design
 
 2. Click on the **Zoom Fit** button to see the waveform window from 0 to 200 ns.
 
-3. Right-click at 50 ns (where the switch input is set to 00000000) and select **Markers > Add Marker**.
+3. Right-click at 120 ns (where the switch input is set to 00000010 [decimal 2]) and select **Markers > Add Marker**.
 
-4. Similarly, right-click and add a marker at around 55.000 ns where the **leds** changes.
+4. Similarly, right-click and add a marker at around 120.000 ns where the **leds** changes.
 
 5. You can also add a marker by clicking on the Add Marker button (![image-20211229114109951](img/Vivado_Tutorial_Using_IP_Integrator/image-20211229114109951.png)). Click on the **Add Marker** button and left-click at around 60 ns where **e_led** changes.
 
@@ -867,13 +869,17 @@ Viewing implemented design
 
 Timing simulation output
 
-Notice that we monitored the expected led output at 10 ns after the input is changed (see the testbench) whereas the actual delay is about 5.000 ns.
+Notice that we monitored the expected led output at 20 ns after the input is changed (see the testbench) whereas the actual delay is about 22.000 ns. A mismatch error will appear in the console window.
+
+<img src="img/Vivado_Tutorial_Using_IP_Integrator/fig38_console_output.png" alt="fig13" style="zoom:67%;" />
+
+Timing simulation console output
 
 6. Close the simulator by selecting **File > Close Simulation** without saving any changes.
 
 ## Step 8 Generate the Bitstream and Verify Functionality
 
-### Connect the board and power it ON. Generate the bitstream, open a hardware session, and program the FPGA.  
+### Connect the board and power it ON. Generate the bitstream, open a hardware session, and program the FPGA  
 
 1. Click on the **Generate Bitstream** entry under the *Program and Debug* tasks of the *Flow Navigator* pane.
 
